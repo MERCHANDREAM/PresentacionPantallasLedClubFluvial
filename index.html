@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MERCHANDREAM x CB BREOGÁN - Productos Exclusivos</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --breogan-blue: #004B87;
+            --breogan-blue-dark: #003A6A;
+            --breogan-blue-light: #0066B3;
+            --breogan-white: #FFFFFF;
+            --breogan-gray: #F5F5F5;
+            --breogan-gray-dark: #333333;
+            --breogan-accent: #FF6B00;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--breogan-gray-dark);
+            background-color: var(--breogan-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        .main-header {
+            background: linear-gradient(135deg, var(--breogan-blue) 0%, var(--breogan-blue-dark) 100%);
+            color: var(--breogan-white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-collaboration {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo-placeholder {
+            width: 120px;
+            height: 60px;
+            background: var(--breogan-white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--breogan-blue);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .collaboration-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .collaboration-text h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            background: linear-gradient(45deg, var(--breogan-white), #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .collaboration-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 75, 135, 0.9), rgba(0, 58, 106, 0.9)),
+                url('https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--breogan-white);
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--breogan-accent);
+            color: var(--breogan-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--breogan-accent);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--breogan-white);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+        }
+
+        /* Products Intro */
+        .products-intro {
+            padding: 4rem 0;
+            background: var(--breogan-gray);
+            text-align: center;
+        }
+
+        .products-intro h2 {
+            color: var(--breogan-blue-dark);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .products-intro p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Bufandas Section */
+        .bufandas-section {
+            padding: 5rem 0;
+            background: var(--breogan-white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--breogan-blue-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--breogan-accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .bufandas-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .bufanda-image-container {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .bufanda-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .bufanda-info {
+            padding-right: 2rem;
+        }
+
+        .bufanda-info h3 {
+            font-size: 2rem;
+            color: var(--breogan-blue);
+            margin-bottom: 1rem;
+        }
+
+        .bufanda-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: var(--breogan-accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* LuckyDolls Section */
+        .luckydolls-section {
+            padding: 5rem 0;
+            background: var(--breogan-gray);
+        }
+
+        .tomoki-types-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--breogan-blue), var(--breogan-accent), var(--breogan-blue-dark));
+            background-size: 200% 200%;
+            animation: gradientBG 8s ease infinite;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card:hover::before {
+            animation: gradientBG 3s ease infinite;
+        }
+
+        .product-title {
+            color: var(--breogan-blue-dark);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .product-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--breogan-accent);
+            border-radius: 3px;
+        }
+
+        .product-subtitle {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .product-highlight {
+            font-weight: 700;
+            color: var(--breogan-blue-dark);
+            margin-bottom: 1.8rem;
+            font-size: 0.9rem;
+            background: #f8f9fa;
+            padding: 0.6rem;
+            border-radius: 6px;
+            display: inline-block;
+            border-left: 3px solid var(--breogan-accent);
+        }
+
+        .gallery-button {
+            background: linear-gradient(135deg, var(--breogan-blue), var(--breogan-blue-dark));
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .gallery-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--breogan-blue-dark), var(--breogan-blue-light));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-button:hover::before {
+            opacity: 1;
+        }
+
+        /* Gallery Modal */
+        .gallery-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            z-index: 2001;
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            animation: popIn 0.4s ease-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 2002;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 500px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 2rem;
+            background: #f9f9f9;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+        .modal-footer h3 {
+            color: var(--breogan-blue-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .modal-footer p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .navigation-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-button {
+            background: var(--breogan-blue);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-button:hover {
+            background: var(--breogan-blue-dark);
+            transform: scale(1.1);
+        }
+
+        .image-counter {
+            font-weight: 600;
+            color: #333;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+            background: var(--breogan-white);
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--breogan-gray);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--breogan-accent);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--breogan-blue);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--breogan-blue-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .contact-link {
+            color: var(--breogan-accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            color: var(--breogan-blue);
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        .main-footer {
+            background: linear-gradient(135deg, var(--breogan-blue-dark) 0%, var(--breogan-blue) 100%);
+            color: var(--breogan-white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo-placeholder {
+            width: 150px;
+            height: 70px;
+            background: var(--breogan-white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--breogan-blue);
+            font-weight: bold;
+        }
+
+        .footer-info {
+            max-width: 600px;
+        }
+
+        .footer-info p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            width: 100%;
+        }
+
+        /* Animations */
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .bufandas-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .bufanda-info {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .logo-collaboration {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .image-container {
+                height: 400px;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-logos {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .image-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo-collaboration">
+                <div class="logo-placeholder">LOGO MERCHANDREAM</div>
+                <div class="collaboration-text">
+                    <h1>MERCHANDREAM × CB BREOGÁN</h1>
+                    <p>Productos exclusivos para los verdaderos aficionados</p>
+                </div>
+                <div class="logo-placeholder">LOGO CB BREOGÁN</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Para los que llevan el Breogán en el corazón</h2>
+            <p>Productos exclusivos y personalizados que conectan emocionalmente con la afición. Calidad premium, diseño
+                único y el orgullo de pertenecer.</p>
+            <a href="#contacto" class="cta-button">Solicitar información exclusiva</a>
+        </div>
+    </section>
+
+    <!-- Products Intro -->
+    <section class="products-intro">
+        <div class="container">
+            <h2>Productos Exclusivos para la Directiva</h2>
+            <p>Diseñamos y fabricamos productos de alta calidad que refuerzan la identidad del club y crean vínculos
+                emocionales con los aficionados más leales.</p>
+        </div>
+    </section>
+
+    <!-- Bufandas Section -->
+    <section class="bufandas-section" id="bufandas">
+        <div class="container">
+            <h2 class="section-title">Bufandas Personalizadas</h2>
+            <div class="bufandas-content">
+                <div class="bufanda-image-container">
+                    <img src="https://images.unsplash.com/photo-1576872381145-b6f3b37d4331?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Bufanda personalizada CB Breogán" class="bufanda-image">
+                </div>
+                <div class="bufanda-info">
+                    <h3>La bufanda que une corazones</h3>
+                    <p>Cada bufanda es una declaración de amor al club. Tejida con los colores del Breogán y
+                        personalizada para crear un vínculo único con cada socio.</p>
+
+                    <ul class="features-list">
+                        <li>Material premium de alta durabilidad</li>
+                        <li>Colores oficiales del CB Breogán</li>
+                        <li>Logo del club y nombre de cada socio</li>
+                        <li>Ideal para regalos institucionales</li>
+                        <li>Perfecta para eventos y partidos especiales</li>
+                    </ul>
+
+                    <p><strong>Genera ingresos adicionales</strong> vendiendo bufandas personalizadas en la tienda del
+                        club o regalándolas a socios destacados.</p>
+
+                    <a href="#contacto" class="cta-button">Solicitar muestras y precios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LuckyDolls Section -->
+    <section class="luckydolls-section" id="luckydolls">
+        <div class="container">
+            <h2 class="section-title">LuckyDolls - Figuras de Poliresina</h2>
+            <p class="section-subtitle"
+                style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #555; font-size: 1.1rem;">
+                Colección exclusiva de figuras que capturan la esencia del club. Perfectas para coleccionistas, regalos
+                corporativos y los aficionados más exigentes.
+            </p>
+
+            <div class="tomoki-types-container">
+                <div class="products-grid" id="luckydollsGrid">
+                    <!-- Product cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto Exclusivo para Directiva</h2>
+            <p style="max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem;">
+                Para solicitar muestras, presupuestos personalizados o información detallada sobre cualquiera de
+                nuestros productos exclusivos.
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email Directo</h3>
+                    <p>Contacta con nuestro equipo directivo para atención personalizada</p>
+                    <a href="mailto:direccion.general@merchandream.es?subject=CB Breogán - Productos Exclusivos&body=Hola, somos la directiva del CB Breogán y estamos interesados en información sobre los productos exclusivos."
+                        target="_blank" class="contact-link">direccion.general@merchandream.es →</a>
+                </div>
+
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📞</div>
+                    <h3>Teléfono Directo</h3>
+                    <p>Atención personalizada para la directiva del club</p>
+                    <a href="tel:+34605195744" class="contact-link">+34 605 195 744 →</a>
+                </div>
+
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">🌐</div>
+                    <h3>Web Corporativa</h3>
+                    <p>Conoce más sobre MERCHANDREAM y nuestros proyectos</p>
+                    <a href="https://merchandream.es" target="_blank" class="contact-link">merchandream.es →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LuckyDolls Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <div class="modal-content">
+            <button class="close-button" id="closeModal">&times;</button>
+
+            <div class="image-container">
+                <img id="modalImage" src="" alt="LuckyDoll Image">
+            </div>
+
+            <div class="modal-footer">
+                <h3 id="modalTitle">Título del producto</h3>
+                <p id="modalHighlight">Destacado del producto</p>
+
+                <div class="navigation-controls">
+                    <button class="nav-button" id="prevButton">&#10094;</button>
+                    <span class="image-counter" id="imageCounter">1 / 1</span>
+                    <button class="nav-button" id="nextButton">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logos">
+                    <div class="footer-logo-placeholder">MERCHANDREAM</div>
+                    <div class="footer-logo-placeholder">CB BREOGÁN</div>
+                </div>
+
+                <div class="footer-info">
+                    <p>Colaboración exclusiva para productos de merchandising premium</p>
+                    <p>Email: direccion.general@merchandream.es | Tel: +34 605 195 744</p>
+                    <p>Especialistas en productos emocionales para clubs deportivos</p>
+                </div>
+
+                <div class="copyright">
+                    <p>&copy; 2025 MERCHANDREAM × CB BREogán. Todos los derechos reservados.</p>
+                    <p>Productos exclusivos para la directiva del club</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // LuckyDolls Data - Converted from React component
+        const tomokiProducts = [
+            {
+                title: "T-Real",
+                subtitle: "Tu figura gigante, a tamaño real que te inmortaliza con cada detalle.",
+                highlight: "Dimensiones: Hasta 2 metros",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                title: "T-10",
+                subtitle: "Espléndido para aquellos aficionados que quieran instalarlo en el salpicadero de sus vehículos, ya que lleva un adhesivo en la base.",
+                highlight: "Dimensiones: 10 centímetros",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80",
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                title: "T-14",
+                subtitle: "Excelente también para vender en tienda como producto de retail y promociones.",
+                highlight: "Dimensiones: 14 centímetros",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                title: "T-18",
+                subtitle: "Perfecto para vender en tienda como producto de retail y promociones.",
+                highlight: "Dimensiones: 18 centímetros",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                title: "T-18 con sonido",
+                subtitle: "18 cm de actitud... con sonido incluido. ¡Hazte con ello!",
+                highlight: "Dimensiones: 18 centímetros",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                title: "T-40",
+                subtitle: "Diseñada para ser el centro de atención. Con sus imponentes 40 cm de altura, esta figura de poliresina es la pieza perfecta para exhibir en tu estantería, vitrina o escritorio.",
+                highlight: "Dimensiones: 40 centímetros",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                title: "T-Vintage",
+                subtitle: "Pensado para aquellos clubs que no tienen mascota ni jugadores estrella.",
+                highlight: "Dimensiones: 14 centímetros",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                title: "T-Holders",
+                subtitle: "Soportes cepillos de dientes, bolígrafos y tarjetas.",
+                highlight: "Todos los tamaños",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                title: "T-Pet",
+                subtitle: "Diseño específico para cada club.",
+                highlight: "Dimensiones: En todos los tamaños, el más recomendado, 14cm",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                title: "T-Figure",
+                subtitle: "Ejemplar para nuestros mitos y leyendas.",
+                highlight: "Todos los tamaños",
+                images: [
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ]
+            }
+        ];
+
+        // Gallery State
+        let selectedProduct = null;
+        let currentImageIndex = 0;
+
+        // DOM Elements
+        const luckydollsGrid = document.getElementById('luckydollsGrid');
+        const galleryModal = document.getElementById('galleryModal');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalHighlight = document.getElementById('modalHighlight');
+        const imageCounter = document.getElementById('imageCounter');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+
+        // Initialize LuckyDolls Grid
+        function initLuckyDollsGrid() {
+            luckydollsGrid.innerHTML = '';
+
+            tomokiProducts.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card fade-in';
+                productCard.style.animationDelay = `${index * 0.1}s`;
+
+                productCard.innerHTML = `
+                    <h3 class="product-title">${product.title}</h3>
+                    <p class="product-subtitle">${product.subtitle}</p>
+                    <p class="product-highlight">${product.highlight}</p>
+                    <button class="gallery-button" data-index="${index}">
+                        Ver imágenes (${product.images.length})
+                    </button>
+                `;
+
+                luckydollsGrid.appendChild(productCard);
+            });
+
+            // Add event listeners to gallery buttons
+            document.querySelectorAll('.gallery-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    openGallery(index);
+                });
+            });
+        }
+
+        // Open Gallery
+        function openGallery(productIndex) {
+            selectedProduct = productIndex;
+            currentImageIndex = 0;
+
+            updateModal();
+            galleryModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Gallery
+        function closeGallery() {
+            galleryModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            selectedProduct = null;
+        }
+
+        // Update Modal Content
+        function updateModal() {
+            if (selectedProduct === null) return;
+
+            const product = tomokiProducts[selectedProduct];
+            const image = product.images[currentImageIndex];
+
+            modalImage.src = image;
+            modalImage.alt = `${product.title} - Imagen ${currentImageIndex + 1}`;
+            modalTitle.textContent = product.title;
+            modalHighlight.textContent = product.highlight;
+            imageCounter.textContent = `${currentImageIndex + 1} / ${product.images.length}`;
+
+            // Ensure all images have consistent size
+            modalImage.onload = function () {
+                const container = modalImage.parentElement;
+                const imgWidth = modalImage.naturalWidth;
+                const imgHeight = modalImage.naturalHeight;
+
+                // Set consistent display
+                modalImage.style.maxWidth = '100%';
+                modalImage.style.maxHeight = '100%';
+                modalImage.style.objectFit = 'contain';
+            };
+        }
+
+        // Next Image
+        function nextImage() {
+            if (selectedProduct === null) return;
+
+            const productImages = tomokiProducts[selectedProduct].images;
+            currentImageIndex = (currentImageIndex + 1) % productImages.length;
+            updateModal();
+        }
+
+        // Previous Image
+        function prevImage() {
+            if (selectedProduct === null) return;
+
+            const productImages = tomokiProducts[selectedProduct].images;
+            currentImageIndex = currentImageIndex === 0 ? productImages.length - 1 : currentImageIndex - 1;
+            updateModal();
+        }
+
+        // Event Listeners
+        modalOverlay.addEventListener('click', closeGallery);
+        closeModalBtn.addEventListener('click', closeGallery);
+        prevButton.addEventListener('click', prevImage);
+        nextButton.addEventListener('click', nextImage);
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (galleryModal.style.display === 'flex') {
+                if (e.key === 'Escape') closeGallery();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'ArrowRight') nextImage();
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initLuckyDollsGrid();
+
+            // Add fade-in animation to elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for fade-in
+            document.querySelectorAll('.contact-card, .product-card, .bufanda-image-container, .bufanda-info').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Prevent hover effects on mobile
+        function hasHoverSupport() {
+            return window.matchMedia('(hover: hover)').matches;
+        }
+
+        if (!hasHoverSupport()) {
+            document.querySelectorAll('.product-card, .contact-card').forEach(card => {
+                card.classList.add('no-hover');
+            });
+        }
+    </script>
+</body>
+
+</html>
