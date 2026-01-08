@@ -3,673 +3,560 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MERCHANDREAM x CB BREOGÁN - Productos Exclusivos</title>
-
-    <!-- Favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Fluvial Lugo x Merchandream | Pantallas LED Publicitables</title>
+    <meta name="description"
+        content="Soluciones LED profesionales para cada espacio del Club Fluvial Lugo. Tecnología enrollable, instalación profesional y mantenimiento garantizado.">
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-
-    <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap"
-        rel="stylesheet">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --breogan-blue: #004B87;
-            --breogan-blue-dark: #003A6A;
-            --breogan-blue-light: #0066B3;
-            --breogan-white: #FFFFFF;
-            --breogan-gray: #F5F5F5;
-            --breogan-gray-dark: #333333;
-            --breogan-accent: #FF6B00;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
-            --border-radius: 12px;
+            --club-primary: #1e3a8a;
+            --club-secondary: #065f46;
+            --club-accent: #dbeafe;
+            --crystal-primary: #0f172a;
+            --crystal-accent: #3b82f6;
+            --crystal-glow: #60a5fa;
+
+            /* Colores naturales para secciones */
+            --piscina-color: #0ea5e9;
+            --gimnasio-color: #ef4444;
+            --escalera-color: #8b5cf6;
+            --vestuario-color: #10b981;
+            --hall-color: #f59e0b;
+            --letras-color: #6366f1;
+            --moviles-color: #ec4899;
+            --crystal-color: #3b82f6;
+            --escalera-horarios-color: #8b5cf6;
+            --escalera-salida-color: #3b82f6;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Botón Ver más especificaciones mejorado */
+        .specs-btn {
+            background: linear-gradient(135deg, var(--club-primary), #1e40af);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(30, 58, 138, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--breogan-gray-dark);
-            background-color: var(--breogan-white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* Header */
-        .main-header {
-            background: linear-gradient(135deg, var(--breogan-blue) 0%, var(--breogan-blue-dark) 100%);
-            color: var(--breogan-white);
-            padding: 1rem 0;
-            position: sticky;
+        .specs-btn::before {
+            content: '';
+            position: absolute;
             top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
         }
 
-        .header-content {
+        .specs-btn:hover {
+            background: linear-gradient(135deg, #1e40af, #1e3a8a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(30, 58, 138, 0.3);
+        }
+
+        .specs-btn:hover::before {
+            left: 100%;
+        }
+
+        .specs-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Modal para especificaciones técnicas */
+        .specs-modal {
+            display: none;
+            position: fixed;
+            z-index: 2001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(8px);
+        }
+
+        .specs-modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            margin: 5vh auto;
+            padding: 0;
+            border-radius: 1.5rem;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 0.4s ease-out;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .specs-modal-header {
+            background: linear-gradient(135deg, var(--club-primary), #1e40af);
+            padding: 1.5rem 2rem;
+            color: white;
+            border-radius: 1.5rem 1.5rem 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
-        .logo-collaboration {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
+        .specs-modal-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+            color: white;
         }
 
-        .logo-placeholder {
-            width: 120px;
-            height: 60px;
-            background: var(--breogan-white);
-            border-radius: 8px;
+        .specs-modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--breogan-blue);
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .collaboration-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .collaboration-text h1 {
-            font-size: 1.5rem;
-            margin: 0;
-            background: linear-gradient(45deg, var(--breogan-white), #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .collaboration-text p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin: 0;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 75, 135, 0.9), rgba(0, 58, 106, 0.9)),
-                url('https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--breogan-white);
-            padding: 6rem 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--breogan-accent);
-            color: var(--breogan-white);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            border: 2px solid var(--breogan-accent);
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
         }
 
-        .cta-button:hover {
-            background: transparent;
-            color: var(--breogan-white);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+        .specs-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
         }
 
-        /* Products Intro */
-        .products-intro {
-            padding: 4rem 0;
-            background: var(--breogan-gray);
-            text-align: center;
+        .specs-modal-body {
+            padding: 2rem;
+            max-height: calc(90vh - 80px);
+            overflow-y: auto;
         }
 
-        .products-intro h2 {
-            color: var(--breogan-blue-dark);
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .products-intro p {
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            font-size: 1.2rem;
-            color: #555;
-        }
-
-        /* Bufandas Section */
-        .bufandas-section {
-            padding: 5rem 0;
-            background: var(--breogan-white);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--breogan-blue-dark);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--breogan-accent);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .bufandas-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .bufanda-image-container {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-strong);
-        }
-
-        .bufanda-image {
+        .specs-table-modal {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .bufanda-info {
-            padding-right: 2rem;
-        }
-
-        .bufanda-info h3 {
-            font-size: 2rem;
-            color: var(--breogan-blue);
-            margin-bottom: 1rem;
-        }
-
-        .bufanda-info p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .features-list li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.05rem;
-        }
-
-        .features-list li::before {
-            content: "✓";
-            color: var(--breogan-accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* LuckyDolls Section */
-        .luckydolls-section {
-            padding: 5rem 0;
-            background: var(--breogan-gray);
-        }
-
-        .tomoki-types-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.8rem;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--breogan-blue), var(--breogan-accent), var(--breogan-blue-dark));
-            background-size: 200% 200%;
-            animation: gradientBG 8s ease infinite;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-        }
-
-        .product-card:hover::before {
-            animation: gradientBG 3s ease infinite;
-        }
-
-        .product-title {
-            color: var(--breogan-blue-dark);
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            font-weight: 800;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .product-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--breogan-accent);
-            border-radius: 3px;
-        }
-
-        .product-subtitle {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 1.2rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
             font-size: 0.95rem;
-        }
-
-        .product-highlight {
-            font-weight: 700;
-            color: var(--breogan-blue-dark);
-            margin-bottom: 1.8rem;
-            font-size: 0.9rem;
-            background: #f8f9fa;
-            padding: 0.6rem;
-            border-radius: 6px;
-            display: inline-block;
-            border-left: 3px solid var(--breogan-accent);
-        }
-
-        .gallery-button {
-            background: linear-gradient(135deg, var(--breogan-blue), var(--breogan-blue-dark));
-            color: white;
-            border: none;
-            padding: 0.8rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            width: 100%;
-            text-align: center;
-            margin-top: auto;
-            position: relative;
+            border-radius: 0.75rem;
             overflow: hidden;
-            z-index: 1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .gallery-button::before {
+        .specs-table-modal th {
+            background: linear-gradient(135deg, #475569, #64748b);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 2px solid #334155;
+        }
+
+        .specs-table-modal td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .specs-table-modal tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .specs-table-modal tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .specs-table-modal td:first-child {
+            font-weight: 600;
+            color: #334155;
+            width: 45%;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .specs-table-modal td:last-child {
+            color: #475569;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .specs-modal-content {
+                margin: 2vh auto;
+                width: 95%;
+                border-radius: 1rem;
+            }
+
+            .specs-modal-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .specs-modal-title {
+                font-size: 1.25rem;
+            }
+
+            .specs-modal-body {
+                padding: 1.5rem;
+            }
+
+            .specs-table-modal th,
+            .specs-table-modal td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        .bg-club-primary {
+            background-color: var(--club-primary);
+        }
+
+        .bg-club-secondary {
+            background-color: var(--club-secondary);
+        }
+
+        .text-club-primary {
+            color: var(--club-primary);
+        }
+
+        .text-club-secondary {
+            color: var(--club-secondary);
+        }
+
+        .text-crystal-primary {
+            color: var(--crystal-primary);
+        }
+
+        .bg-crystal-primary {
+            background-color: var(--crystal-primary);
+        }
+
+        .bg-crystal-accent {
+            background-color: var(--crystal-accent);
+        }
+
+        /* Fondo de agua animado más sutil */
+        body::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--breogan-blue-dark), var(--breogan-blue-light));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .gallery-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-button:hover::before {
-            opacity: 1;
-        }
-
-        /* Gallery Modal */
-        .gallery-modal {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(45deg, rgba(14, 165, 233, 0.08) 25%, transparent 25%, transparent 75%, rgba(14, 165, 233, 0.08) 75%),
+                linear-gradient(-45deg, rgba(56, 189, 248, 0.08) 25%, transparent 25%, transparent 75%, rgba(56, 189, 248, 0.08) 75%);
+            background-size: 80px 80px;
+            opacity: 0.6;
+            z-index: -1;
+            animation: waterFlow 30s linear infinite;
+            pointer-events: none;
         }
 
-        .modal-overlay {
+        @keyframes waterFlow {
+            0% {
+                background-position: 0 0, 40px 40px;
+            }
+
+            100% {
+                background-position: 80px 80px, 120px 120px;
+            }
+        }
+
+        /* Efecto de reflejo de agua en el fondo */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0.3;
+            z-index: -1;
+            animation: waterReflection 10s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes waterReflection {
+            0% {
+                transform: translateY(0px);
+            }
+
+            100% {
+                transform: translateY(20px);
+            }
+        }
+
+        /* Colores específicos para cada sección */
+        .section-piscina {
+            border-left: 6px solid var(--piscina-color);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .text-piscina {
+            color: var(--piscina-color);
+        }
+
+        .btn-piscina {
+            background-color: var(--piscina-color);
+        }
+
+        .btn-piscina:hover {
+            background-color: #0284c7;
+        }
+
+        .section-gimnasio {
+            border-left: 6px solid var(--gimnasio-color);
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        }
+
+        .text-gimnasio {
+            color: var(--gimnasio-color);
+        }
+
+        .btn-gimnasio {
+            background-color: var(--gimnasio-color);
+        }
+
+        .btn-gimnasio:hover {
+            background-color: #dc2626;
+        }
+
+        .section-escalera {
+            border-left: 6px solid var(--escalera-color);
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+        }
+
+        .text-escalera {
+            color: var(--escalera-color);
+        }
+
+        .btn-escalera {
+            background-color: var(--escalera-color);
+        }
+
+        .btn-escalera:hover {
+            background-color: #7c3aed;
+        }
+
+        .section-vestuario {
+            border-left: 6px solid var(--vestuario-color);
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+        }
+
+        .text-vestuario {
+            color: var(--vestuario-color);
+        }
+
+        .btn-vestuario {
+            background-color: var(--vestuario-color);
+        }
+
+        .btn-vestuario:hover {
+            background-color: #059669;
+        }
+
+        .section-hall {
+            border-left: 6px solid var(--hall-color);
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        }
+
+        .text-hall {
+            color: var(--hall-color);
+        }
+
+        .btn-hall {
+            background-color: var(--hall-color);
+        }
+
+        .btn-hall:hover {
+            background-color: #d97706;
+        }
+
+        .section-letras {
+            border-left: 6px solid var(--letras-color);
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+        }
+
+        .text-letras {
+            color: var(--letras-color);
+        }
+
+        .btn-letras {
+            background-color: var(--letras-color);
+        }
+
+        .btn-letras:hover {
+            background-color: #4f46e5;
+        }
+
+        .section-moviles {
+            border-left: 6px solid var(--moviles-color);
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+        }
+
+        .text-moviles {
+            color: var(--moviles-color);
+        }
+
+        .btn-moviles {
+            background-color: var(--moviles-color);
+        }
+
+        .btn-moviles:hover {
+            background-color: #db2777;
+        }
+
+        .section-crystalblink {
+            border-left: 6px solid var(--crystal-color);
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+
+        .text-crystalblink {
+            color: var(--crystal-color);
+        }
+
+        .btn-crystalblink {
+            background-color: var(--crystal-color);
+        }
+
+        .btn-crystalblink:hover {
+            background-color: #2563eb;
+        }
+
+        /* Números de sección con colores */
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 12px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .section-number.piscina {
+            background-color: var(--piscina-color);
+        }
+
+        .section-number.gimnasio {
+            background-color: var(--gimnasio-color);
+        }
+
+        .section-number.escalera {
+            background-color: var(--escalera-color);
+        }
+
+        .section-number.vestuario {
+            background-color: var(--vestuario-color);
+        }
+
+        .section-number.hall {
+            background-color: var(--hall-color);
+        }
+
+        .section-number.letras {
+            background-color: var(--letras-color);
+        }
+
+        .section-number.moviles {
+            background-color: var(--moviles-color);
+        }
+
+        .section-number.crystalblink {
+            background-color: var(--crystal-color);
+        }
+
+        /* Subsecciones con colores más suaves */
+        .subsection-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subsection-card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
+            width: 4px;
+            height: 100%;
+            background: currentColor;
+            opacity: 0.2;
+        }
+
+        .subsection-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Botones de galería en subsecciones */
+        .gallery-btn-subsection {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            color: white;
+            margin-top: 16px;
+            width: 100%;
+        }
+
+        /* Modal y Carrusel (mantener igual) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(5px);
         }
 
         .modal-content {
+            background-color: #f8fafc;
+            margin: 2vh auto;
+            padding: 2rem;
+            border-radius: 2rem;
+            width: 96%;
+            max-width: 1400px;
+            max-height: 96vh;
+            overflow-y: auto;
             position: relative;
-            z-index: 2001;
-            background: white;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            animation: popIn 0.4s ease-out;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            font-size: 1.3rem;
-            cursor: pointer;
-            z-index: 2002;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .close-button:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: scale(1.1);
-        }
-
-        .image-container {
-            width: 100%;
-            height: 500px;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            padding: 2rem;
-            background: #f9f9f9;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border-radius: 6px;
-        }
-
-        .modal-footer {
-            padding: 1.5rem;
-            background: white;
-            border-top: 1px solid #eee;
-        }
-
-        .modal-footer h3 {
-            color: var(--breogan-blue-dark);
-            margin-bottom: 0.3rem;
-        }
-
-        .modal-footer p {
-            color: #666;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .navigation-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .nav-button {
-            background: var(--breogan-blue);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .nav-button:hover {
-            background: var(--breogan-blue-dark);
-            transform: scale(1.1);
-        }
-
-        .image-counter {
-            font-weight: 600;
-            color: #333;
-            min-width: 70px;
-            text-align: center;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 5rem 0;
-            background: var(--breogan-white);
-            text-align: center;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-card {
-            background: var(--breogan-gray);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--breogan-accent);
-            box-shadow: var(--shadow-strong);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            color: var(--breogan-blue);
-            margin-bottom: 1rem;
-        }
-
-        .contact-card h3 {
-            color: var(--breogan-blue-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card p {
-            color: #555;
-            margin-bottom: 1rem;
-        }
-
-        .contact-link {
-            color: var(--breogan-accent);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: var(--transition);
-        }
-
-        .contact-link:hover {
-            color: var(--breogan-blue);
-            transform: translateX(5px);
-        }
-
-        /* Footer */
-        .main-footer {
-            background: linear-gradient(135deg, var(--breogan-blue-dark) 0%, var(--breogan-blue) 100%);
-            color: var(--breogan-white);
-            padding: 3rem 0 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .footer-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-logo-placeholder {
-            width: 150px;
-            height: 70px;
-            background: var(--breogan-white);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--breogan-blue);
-            font-weight: bold;
-        }
-
-        .footer-info {
-            max-width: 600px;
-        }
-
-        .footer-info p {
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
-        }
-
-        .copyright {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.7;
-            width: 100%;
-        }
-
-        /* Animations */
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes popIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+            animation: fadeIn 0.4s ease-out;
         }
 
         @keyframes fadeIn {
@@ -684,541 +571,3157 @@
             }
         }
 
-        .fade-in {
-            animation: fadeIn 0.5s ease forwards;
+        .btn-close-xl {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+            background: white;
+            color: #0f172a;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
         }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .bufandas-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
+        .btn-close-xl:hover {
+            background: #ef4444;
+            color: white;
+            transform: rotate(90deg) scale(1.1);
+        }
 
-            .bufanda-info {
-                padding-right: 0;
-                text-align: center;
-            }
+        /* Carrusel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 2rem 0;
+        }
 
-            .hero h2 {
-                font-size: 2.5rem;
-            }
+        .carousel-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            gap: 0;
+            border-radius: 1.5rem;
+            background: #000;
+        }
 
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 60vh;
+            object-fit: contain;
+            background: #000;
+            display: block;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            font-size: 1.25rem;
+        }
+
+        .carousel-nav:hover {
+            background: var(--club-primary);
+            color: white;
+        }
+
+        .carousel-nav.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .carousel-nav.prev {
+            left: 1.5rem;
+        }
+
+        .carousel-nav.next {
+            right: 1.5rem;
+        }
+
+        /* Videos en modal - LADO A LADO */
+        .videos-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .modal-video {
+            width: 100%;
+            height: 50vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .video-caption {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        /* Secciones */
+        .section-card {
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(229, 231, 235, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            opacity: 0.1;
+            transform: translate(30%, -30%);
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Tablas expandibles */
+        .table-container {
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            max-height: 500px;
+        }
+
+        .table-container {
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            max-height: 500px;
+        }
+
+        .table-container:not(.collapsed) {
+            overflow-y: auto;
+            max-height: 600px;
+            /* Aumentado para mostrar más filas */
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .table-container .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            /* Eliminamos el margen superior/inferior */
+            font-size: 0.9rem;
+        }
+
+        .table-container .specs-table th,
+        .table-container .specs-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table-container .specs-table th {
+            background-color: var(--club-primary);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .table-container .specs-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .table-container .specs-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Para asegurar que la última fila tenga borde completo */
+        .table-container .specs-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Scroll personalizado para table-container */
+        .table-container:not(.collapsed)::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .table-container:not(.collapsed)::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+
+        .table-container:not(.collapsed)::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .table-container:not(.collapsed)::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .toggle-table-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-table-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .toggle-table-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-table-btn.collapsed i {
+            transform: rotate(180deg);
+        }
+
+        /* Especificaciones técnicas */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .specs-table th,
+        .specs-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .specs-table th {
+            background-color: var(--club-primary);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+        }
+
+        .specs-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .specs-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Precios destacados */
+        .price-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--club-secondary), #047857);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(6, 95, 70, 0.2);
+        }
+
+        /* Estilos CrystalBlink */
+        .crystalblink-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .crystalblink-content {
+            padding: 2.5rem;
+        }
+
+        .smart-glass-panel {
+            width: 100%;
+            height: 400px;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(0px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .smart-glass-panel.active {
+            background: #0f172a;
+            border-color: #334155;
+        }
+
+        .smart-glass-panel .glass-reflection {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 70%);
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .glass-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .projected-logo {
+            position: absolute;
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+            letter-spacing: 4px;
+        }
+
+        .smart-glass-panel.active.logo-visible .projected-logo {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .inactive-logo {
+            position: absolute;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #94a3b8;
+            text-align: center;
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.5s ease;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .inactive-logo .small-text {
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .smart-glass-panel.active .inactive-logo {
+            opacity: 0;
+            transform: scale(1.1);
+            filter: blur(10px);
+        }
+
+        .status-pill {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(4px);
+            z-index: 10;
+        }
+
+        /* Carrusel CrystalBlink */
+        .crystal-carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .display-window {
+            width: 300px;
+            height: 200px;
+            border-radius: 12px;
+            position: relative;
+            border: 4px solid #e2e8f0;
+            transition: background 0.5s ease;
+        }
+
+        .display-window.transparente {
+            background: #eff6ff;
+        }
+
+        .display-window.oscuro {
+            background: #1e293b;
+        }
+
+        .display-window.logo {
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .display-window.logo::after {
+            content: 'LOGO';
+            color: white;
+            font-weight: bold;
+            font-size: 2rem;
+            text-shadow: 0 0 10px var(--crystal-accent);
+        }
+
+        .crystal-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .crystal-dot.active {
+            background-color: var(--crystal-accent);
+            transform: scale(1.2);
+        }
+
+        /* Navbar con contacto */
+        .contact-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4b5563;
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .contact-item:hover {
+            color: var(--club-primary);
+        }
+
+        .contact-icon {
+            color: var(--club-primary);
+            font-size: 14px;
+        }
+
+        .divider {
+            height: 24px;
+            width: 1px;
+            background-color: #e5e7eb;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 110;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: flex;
         }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+            .carousel-slide img {
+                height: 40vh;
             }
 
-            .logo-collaboration {
-                flex-direction: column;
-                gap: 1rem;
+            .videos-container {
+                grid-template-columns: 1fr;
             }
 
-            .hero {
-                padding: 4rem 0;
+            .modal-video {
+                height: 30vh;
             }
 
-            .hero h2 {
-                font-size: 2rem;
+            .modal-content {
+                padding: 1.5rem;
+                margin: 1vh auto;
+                border-radius: 1.5rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .section-card {
+                padding: 1.5rem;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .carousel-nav {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1rem;
             }
 
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-
-            .image-container {
-                height: 400px;
+            .subsection-card {
                 padding: 1rem;
+            }
+
+            .smart-glass-panel {
+                height: 300px;
+            }
+
+            .crystal-carousel {
+                flex-direction: column;
+            }
+
+            .contact-nav {
+                display: none;
             }
         }
 
-        @media (max-width: 576px) {
-            .container {
-                width: 95%;
-            }
+        /* Sección 3: Escalera Horarios */
+        .section-escalera-horarios {
+            border-left: 6px solid var(--escalera-horarios-color);
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+        }
 
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
+        .text-escalera-horarios {
+            color: var(--escalera-horarios-color);
+        }
 
-            .hero h2 {
-                font-size: 1.8rem;
-            }
+        .btn-escalera-horarios {
+            background-color: var(--escalera-horarios-color);
+        }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+        .btn-escalera-horarios:hover {
+            background-color: #7c3aed;
+        }
 
-            .footer-logos {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
+        /* Sección 4: Escalera Salida */
+        .section-escalera-salida {
+            border-left: 6px solid var(--escalera-salida-color);
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
 
-            .image-container {
-                height: 300px;
-            }
+        .text-escalera-salida {
+            color: var(--escalera-salida-color);
+        }
+
+        .btn-escalera-salida {
+            background-color: var(--escalera-salida-color);
+        }
+
+        .btn-escalera-salida:hover {
+            background-color: #2563eb;
+        }
+
+        /* Números de sección para escalera */
+        .section-number.escalera-horarios {
+            background-color: var(--escalera-horarios-color);
+        }
+
+        .section-number.escalera-salida {
+            background-color: var(--escalera-salida-color);
+        }
+
+        /* Botones de galería para secciones sin subsecciones */
+        .gallery-btn-section {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            color: white;
+            margin-top: 24px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .gallery-btn-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
 
-<body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container header-content">
-            <div class="logo-collaboration">
-                <div class="logo-placeholder">LOGO MERCHANDREAM</div>
-                <div class="collaboration-text">
-                    <h1>MERCHANDREAM × CB BREOGÁN</h1>
-                    <p>Productos exclusivos para los verdaderos aficionados</p>
-                </div>
-                <div class="logo-placeholder">LOGO CB BREOGÁN</div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h2>Para los que llevan el Breogán en el corazón</h2>
-            <p>Productos exclusivos y personalizados que conectan emocionalmente con la afición. Calidad premium, diseño
-                único y el orgullo de pertenecer.</p>
-            <a href="#contacto" class="cta-button">Solicitar información exclusiva</a>
-        </div>
-    </section>
-
-    <!-- Products Intro -->
-    <section class="products-intro">
-        <div class="container">
-            <h2>Productos Exclusivos para la Directiva</h2>
-            <p>Diseñamos y fabricamos productos de alta calidad que refuerzan la identidad del club y crean vínculos
-                emocionales con los aficionados más leales.</p>
-        </div>
-    </section>
-
-    <!-- Bufandas Section -->
-    <section class="bufandas-section" id="bufandas">
-        <div class="container">
-            <h2 class="section-title">Bufandas Personalizadas</h2>
-            <div class="bufandas-content">
-                <div class="bufanda-image-container">
-                    <img src="https://images.unsplash.com/photo-1576872381145-b6f3b37d4331?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Bufanda personalizada CB Breogán" class="bufanda-image">
-                </div>
-                <div class="bufanda-info">
-                    <h3>La bufanda que une corazones</h3>
-                    <p>Cada bufanda es una declaración de amor al club. Tejida con los colores del Breogán y
-                        personalizada para crear un vínculo único con cada socio.</p>
-
-                    <ul class="features-list">
-                        <li>Material premium de alta durabilidad</li>
-                        <li>Colores oficiales del CB Breogán</li>
-                        <li>Logo del club y nombre de cada socio</li>
-                        <li>Ideal para regalos institucionales</li>
-                        <li>Perfecta para eventos y partidos especiales</li>
-                    </ul>
-
-                    <p><strong>Genera ingresos adicionales</strong> vendiendo bufandas personalizadas en la tienda del
-                        club o regalándolas a socios destacados.</p>
-
-                    <a href="#contacto" class="cta-button">Solicitar muestras y precios</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LuckyDolls Section -->
-    <section class="luckydolls-section" id="luckydolls">
-        <div class="container">
-            <h2 class="section-title">LuckyDolls - Figuras de Poliresina</h2>
-            <p class="section-subtitle"
-                style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #555; font-size: 1.1rem;">
-                Colección exclusiva de figuras que capturan la esencia del club. Perfectas para coleccionistas, regalos
-                corporativos y los aficionados más exigentes.
-            </p>
-
-            <div class="tomoki-types-container">
-                <div class="products-grid" id="luckydollsGrid">
-                    <!-- Product cards will be populated by JavaScript -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contacto">
-        <div class="container">
-            <h2 class="section-title">Contacto Exclusivo para Directiva</h2>
-            <p style="max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem;">
-                Para solicitar muestras, presupuestos personalizados o información detallada sobre cualquiera de
-                nuestros productos exclusivos.
-            </p>
-
-            <div class="contact-grid">
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email Directo</h3>
-                    <p>Contacta con nuestro equipo directivo para atención personalizada</p>
-                    <a href="mailto:direccion.general@merchandream.es?subject=CB Breogán - Productos Exclusivos&body=Hola, somos la directiva del CB Breogán y estamos interesados en información sobre los productos exclusivos."
-                        target="_blank" class="contact-link">direccion.general@merchandream.es →</a>
-                </div>
-
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">📞</div>
-                    <h3>Teléfono Directo</h3>
-                    <p>Atención personalizada para la directiva del club</p>
-                    <a href="tel:+34605195744" class="contact-link">+34 605 195 744 →</a>
-                </div>
-
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">🌐</div>
-                    <h3>Web Corporativa</h3>
-                    <p>Conoce más sobre MERCHANDREAM y nuestros proyectos</p>
-                    <a href="https://merchandream.es" target="_blank" class="contact-link">merchandream.es →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LuckyDolls Gallery Modal -->
-    <div class="gallery-modal" id="galleryModal">
-        <div class="modal-overlay" id="modalOverlay"></div>
-
-        <div class="modal-content">
-            <button class="close-button" id="closeModal">&times;</button>
-
-            <div class="image-container">
-                <img id="modalImage" src="" alt="LuckyDoll Image">
+<body class="font-sans text-slate-900 leading-normal">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-[100] bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center shrink-0 header-collaboration">
+                <img src="https://www.clubfluviallugo.com/assets/images/logo.png" alt="Club Fluvial Lugo"
+                    class="club-logo h-10">
+                <div class="h-8 w-px bg-slate-300 mx-4"></div>
+                <img src="./assets/Dibujo01-NoBAK.png" alt="MERCHANDREAM" class="merchandream-logo h-8">
             </div>
 
-            <div class="modal-footer">
-                <h3 id="modalTitle">Título del producto</h3>
-                <p id="modalHighlight">Destacado del producto</p>
+            <!-- Desktop Menu -->
+            <div
+                class="hidden xl:flex items-center space-x-4 text-xs font-bold uppercase tracking-widest text-slate-600">
+                <a href="#piscina" class="hover:text-club-primary transition-colors px-3">Piscina</a>
+                <a href="#gimnasio" class="hover:text-club-primary transition-colors px-3">Gimnasio</a>
+                <a href="#escalera-horarios" class="hover:text-club-primary transition-colors px-3">Escalera
+                    Horarios</a>
+                <a href="#escalera-salida" class="hover:text-club-primary transition-colors px-3">Escalera Salida</a>
+                <a href="#vestuario-masculino" class="hover:text-club-primary transition-colors px-3">Vestuario M</a>
+                <a href="#vestuario-femenino" class="hover:text-club-primary transition-colors px-3">Vestuario F</a>
+                <a href="#hall-entrada" class="hover:text-club-primary transition-colors px-3">Hall de Entrada</a>
+                <a href="#letras-calle" class="hover:text-club-primary transition-colors px-3">Letras en la Calle</a>
+                <a href="#pantallas-moviles" class="hover:text-club-primary transition-colors px-3">Pantallas
+                    Móviles</a>
+                <a href="#crystalblink" class="hover:text-club-primary transition-colors px-3">CrystalBlink</a>
+            </div>
 
-                <div class="navigation-controls">
-                    <button class="nav-button" id="prevButton">&#10094;</button>
-                    <span class="image-counter" id="imageCounter">1 / 1</span>
-                    <button class="nav-button" id="nextButton">&#10095;</button>
+            <!-- Contacto en Navbar -->
+            <div class="hidden xl:flex contact-nav">
+                <a href="mailto:direccion.general@merchandream.es" class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    direccion.general@merchandream.es
+                </a>
+                <div class="divider"></div>
+                <a href="tel:+34605195744" class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    +34 605 195 744
+                </a>
+            </div>
+
+            <button id="mobile-menu-open" class="xl:hidden text-slate-900 text-2xl p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="h-16 flex justify-between items-center px-4 border-b border-slate-100">
+            <div class="flex items-center gap-4">
+                <img src="https://www.clubfluviallugo.com/assets/images/logo.png" alt="Club Fluvial Lugo" class="h-10">
+                <div class="h-6 w-px bg-slate-300"></div>
+                <img src="./assets/Dibujo01-NoBAK.png" alt="MERCHANDREAM" class="h-8">
+            </div>
+            <button id="mobile-menu-close" class="text-slate-900 text-4xl p-2">&times;</button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-6">
+            <nav class="space-y-4">
+                <a href="#piscina"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">Piscina</a>
+                <a href="#gimnasio"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">Gimnasio</a>
+                <a href="#escalera-horarios"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">Escalera
+                    Horarios</a>
+                <a href="#escalera-salida"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">Escalera
+                    Salida</a>
+                <a href="#vestuario-masculino"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">Vestuario
+                    Masculino</a>
+                <a href="#vestuario-femenino"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">Vestuario
+                    Femenino</a>
+                <a href="#hall-entrada"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">Hall de
+                    Entrada</a>
+                <a href="#letras-calle"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">Letras en
+                    la Calle</a>
+                <a href="#pantallas-moviles"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">Pantallas
+                    Móviles</a>
+                <a href="#crystalblink"
+                    class="mobile-link block py-3 text-lg font-bold text-slate-800 border-b border-slate-100">CrystalBlink</a>
+            </nav>
+
+            <!-- Contacto en menú móvil -->
+            <div class="mt-8 pt-8 border-t border-slate-200">
+                <div class="space-y-4">
+                    <a href="mailto:direccion.general@merchandream.es" class="flex items-center gap-3 text-slate-700">
+                        <i class="fas fa-envelope text-club-primary"></i>
+                        <span class="text-sm">direccion.general@merchandream.es</span>
+                    </a>
+                    <a href="tel:+34605195744" class="flex items-center gap-3 text-slate-700">
+                        <i class="fas fa-phone text-club-primary"></i>
+                        <span class="text-sm">+34 605 195 744</span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 px-4 bg-gradient-to-b from-white to-slate-50/80">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="flex items-center justify-center mb-6">
+                    <img src="https://www.clubfluviallugo.com/assets/images/logo.png" alt="Club Fluvial Lugo"
+                        class="h-16">
+                    <span class="mx-6 text-3xl font-bold text-slate-400">×</span>
+                    <img src="./assets/Dibujo01-NoBAK.png" alt="MERCHANDREAM" class="h-12">
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-black mb-6 leading-tight text-slate-900">
+                    Pantallas LED <span class="text-club-primary">Publicitables</span><br>
+                    <span class="text-4xl lg:text-5xl text-slate-700">Soluciones Profesionales para Cada Espacio</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-10 max-w-3xl mx-auto">
+                    Tecnología LED de última generación para las necesidades del Club Fluvial Lugo.
+                    Instalación profesional, mantenimiento garantizado y máximo impacto visual.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="flex items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                        <i class="fas fa-swimming-pool text-club-primary text-2xl mr-4"></i>
+                        <div>
+                            <span class="block font-bold">10 zonas específicas</span>
+                            <span class="text-xs text-slate-400">Soluciones personalizadas</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                        <i class="fas fa-shield-alt text-club-primary text-2xl mr-4"></i>
+                        <div>
+                            <span class="block font-bold">Protección IP</span>
+                            <span class="text-xs text-slate-400">Resistencia a humedad y clima</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                        <i class="fas fa-tools text-club-primary text-2xl mr-4"></i>
+                        <div>
+                            <span class="block font-bold">Instalación Incluida</span>
+                            <span class="text-xs text-slate-400">Profesional y garantizada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8" id="sections-container">
+        <!-- Sección 1: PISCINA -->
+        <section id="piscina" class="section-card scroll-mt-24 section-piscina">
+            <div class="flex items-center mb-6">
+                <span class="section-number piscina">01</span>
+                <h2 class="text-3xl font-black text-slate-900">Pantallas LED Piscina</h2>
+            </div>
+            <p class="text-lg text-slate-600 mb-8">
+
+            </p>
+
+            <!-- Subsección 1: Pantalla entre Columnas -->
+            <div class="subsection-card" style="color: var(--piscina-color);">
+                <h3 class="text-xl font-bold text-piscina mb-4">Pantalla sobre Columnas</h3>
+                <p class="text-slate-600 mb-4"><strong>Modelo:</strong> INDOOR X P2.6 SMD LED DISPLAY</p>
+
+                <button class="toggle-table-btn" onclick="toggleTable('piscina1')">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Ver especificaciones técnicas</span>
+                </button>
+
+                <div id="piscina1" class="table-container">
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Especificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pixel Pitch</td>
+                                <td>2.6</td>
+                            </tr>
+                            <tr>
+                                <td>IC driver</td>
+                                <td>3840Hz</td>
+                            </tr>
+                            <tr>
+                                <td>Cabinet size</td>
+                                <td>500mm*500mm</td>
+                            </tr>
+                            <tr>
+                                <td>Module size</td>
+                                <td>250mm*250mm</td>
+                            </tr>
+                            <tr>
+                                <td>Driver mode</td>
+                                <td>1/32 scan</td>
+                            </tr>
+                            <tr>
+                                <td>Peso pieza</td>
+                                <td>0,35 kg</td>
+                            </tr>
+                            <tr>
+                                <td>Color Configuration</td>
+                                <td>1R1G1B</td>
+                            </tr>
+                            <tr>
+                                <td>Resolución largo*alto</td>
+                                <td>11538/385</td>
+                            </tr>
+                            <tr>
+                                <td>Total Screen resolution</td>
+                                <td>4437870</td>
+                            </tr>
+                            <tr>
+                                <td>Cantidad de módulos</td>
+                                <td>240</td>
+                            </tr>
+                            <tr>
+                                <td>Cantidad de cabinas</td>
+                                <td>60</td>
+                            </tr>
+                            <tr>
+                                <td>Tamaño largo*alto</td>
+                                <td>30000/1000mm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6">
+                    <span class="price-tag">21.868,00 €</span>
+                    <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                        <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                    </button>
+                </div>
+
+                <!-- Botón GALERÍA en cada subsección -->
+                <button onclick="openGallery('piscina-columnas', 3)" class="gallery-btn-subsection btn-piscina">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+            </div>
+
+            <!-- Subsección 2: Pantalla Intermedia Columnas -->
+            <div class="subsection-card" style="color: var(--piscina-color);">
+                <h3 class="text-xl font-bold text-piscina mb-4">Pantalla Intermedia Columnas</h3>
+                <p class="text-slate-600 mb-4">
+                    Para los días de competición y como apoyo publicitario proponemos 2 tipos de pantalla que seguro
+                    serán del gusto de los espectadores por su originalidad y modernidad.
+                </p>
+
+                <div class="mb-6">
+                    <p class="font-semibold mb-2">OPCIÓN 1: Rolling Led Screen P2.6</p>
+                    <span class="price-tag">42.915,00 €</span>
+                    <button class="specs-btn" onclick="openSpecsFromButton(this)" style="margin-left: 1rem;">
+                        <i class="fas fa-info-circle mr-2"></i>Ver especificaciones
+                    </button>
+                </div>
+
+                <div>
+                    <p class="font-semibold mb-2">OPCIÓN 2: Pantalla rotativa Ten Layer Double-sided Rotating Screen</p>
+                    <p class="text-piscina italic mb-2">Mi opción favorita. Creo que con esta pantalla se daría un
+                        salto de imagen.</p>
+                    <span class="price-tag">51.051,00 €</span>
+                    <button class="specs-btn" onclick="openSpecsFromButton(this)" style="margin-left: 1rem;">
+                        <i class="fas fa-info-circle mr-2"></i>Ver especificaciones
+                    </button>
+                </div>
+
+                <!-- Botón GALERÍA en cada subsección -->
+                <button onclick="openGallery('piscina-intermedia', 3)" class="gallery-btn-subsection btn-piscina">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+            </div>
+
+            <!-- Subsección 3: Piscinas con 3 y 6 calles -->
+            <div class="subsection-card" style="color: var(--piscina-color);">
+                <h3 class="text-xl font-bold text-piscina mb-4">Piscinas con 3 y 6 calles</h3>
+                <p class="text-slate-600 mb-4">
+                    <strong>Modelo con Tecnología GOB:</strong> INDOOR X P1.95 GOB LED DISPLAY<br>
+                    <small class="text-slate-500">GOB (Glue on Board) proporciona mayor protección contra humedad y
+                        golpes.</small>
+                </p>
+
+                <button class="toggle-table-btn" onclick="toggleTable('piscina3')">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Ver especificaciones técnicas</span>
+                </button>
+
+                <div id="piscina3" class="table-container">
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Especificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LED TYPE</td>
+                                <td>GOB X1.25</td>
+                            </tr>
+                            <tr>
+                                <td>Pixel Pitch</td>
+                                <td>1.95</td>
+                            </tr>
+                            <tr>
+                                <td>IC driver</td>
+                                <td>3840Hz</td>
+                            </tr>
+                            <tr>
+                                <td>Cabinet size</td>
+                                <td>500mm*500mm</td>
+                            </tr>
+                            <tr>
+                                <td>Module size</td>
+                                <td>250mm*250mm</td>
+                            </tr>
+                            <tr>
+                                <td>Driver mode</td>
+                                <td>1/32 scan</td>
+                            </tr>
+                            <tr>
+                                <td>Peso pieza</td>
+                                <td>0,35 kg</td>
+                            </tr>
+                            <tr>
+                                <td>Color Configuration</td>
+                                <td>1R1G1B</td>
+                            </tr>
+                            <tr>
+                                <td>Resolución largo*alto</td>
+                                <td>1795/1026</td>
+                            </tr>
+                            <tr>
+                                <td>Total Screen resolution</td>
+                                <td>1840894</td>
+                            </tr>
+                            <tr>
+                                <td>Tamaño Pantalla largo*alto</td>
+                                <td>3500/2000mm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6">
+                    <span class="price-tag">12.442,00 € x 2 uds = 24.884,00 €</span>
+                    <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                        <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                    </button>
+                </div>
+
+                <!-- Botón GALERÍA en cada subsección -->
+                <button onclick="openGallery('piscina-calles', 3)" class="gallery-btn-subsection btn-piscina">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+            </div>
+        </section>
+
+        <!-- Sección 2: GIMNASIO -->
+        <section id="gimnasio" class="section-card scroll-mt-24 section-gimnasio">
+            <div class="flex items-center mb-6">
+                <span class="section-number gimnasio">02</span>
+                <h2 class="text-3xl font-black text-slate-900">Pantallas LED Gimnasio</h2>
+            </div>
+            <p class="text-lg text-slate-600 mb-8">
+            </p>
+
+            <!-- Subsecciones para Room 1, 2, 3 -->
+            <div class="space-y-6">
+                <div class="subsection-card" style="color: var(--gimnasio-color);">
+                    <h3 class="text-xl font-bold text-gimnasio mb-4">Room 1 - Pantalla A</h3>
+                    <p class="text-slate-600 mb-4"><strong>Modelo:</strong> INDOOR X P2.6 SMD LED DISPLAY</p>
+
+                    <button class="toggle-table-btn" onclick="toggleTable('gimnasio-room1a-table')">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Ver especificaciones técnicas</span>
+                    </button>
+
+                    <div id="gimnasio-room1a-table" class="table-container">
+                        <table class="specs-table">
+                            <thead>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Especificación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LED TYPE</td>
+                                    <td>SMD X2.60</td>
+                                </tr>
+                                <tr>
+                                    <td>Pixel Pitch</td>
+                                    <td>2.6</td>
+                                </tr>
+                                <tr>
+                                    <td>IC driver</td>
+                                    <td>3840Hz</td>
+                                </tr>
+                                <tr>
+                                    <td>Cabinet size</td>
+                                    <td>500mm*500mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Module size</td>
+                                    <td>250mm*250mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Driver mode</td>
+                                    <td>1/32 scan</td>
+                                </tr>
+                                <tr>
+                                    <td>Peso pieza</td>
+                                    <td>0,35 kg</td>
+                                </tr>
+                                <tr>
+                                    <td>Color Configuration</td>
+                                    <td>1R1G1B</td>
+                                </tr>
+                                <tr>
+                                    <td>Tamaño largo*alto</td>
+                                    <td>15000mm/1500mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Resolución largo*alto</td>
+                                    <td>5769/577</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Screen resolution</td>
+                                    <td>3328402</td>
+                                </tr>
+                                <tr>
+                                    <td>Cantidad de módulos</td>
+                                    <td>360 pcs</td>
+                                </tr>
+                                <tr>
+                                    <td>Cantidad de cabinas</td>
+                                    <td>90 piezas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-6">
+                        <span class="price-tag">17.630,50 €</span>
+                        <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                            <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                        </button>
+                    </div>
+
+                    <!-- Botón GALERÍA en cada subsección -->
+                    <button onclick="openGallery('gimnasio-room1-a', 3)" class="gallery-btn-subsection btn-gimnasio">
+                        <i class="fas fa-images"></i> Ver Galería Completa
+                    </button>
+                </div>
+
+                <div class="subsection-card" style="color: var(--gimnasio-color);">
+                    <h3 class="text-xl font-bold text-gimnasio mb-4">Room 1 - Pantalla B</h3>
+                    <p class="text-slate-600 mb-4"><strong>Modelo:</strong> INDOOR X P2.6 SMD LED DISPLAY</p>
+
+                    <button class="toggle-table-btn" onclick="toggleTable('gimnasio-room1b-table')">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Ver especificaciones técnicas</span>
+                    </button>
+
+                    <div id="gimnasio-room1b-table" class="table-container">
+                        <table class="specs-table">
+                            <thead>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Especificación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LED TYPE</td>
+                                    <td>SMD X2.60</td>
+                                </tr>
+                                <tr>
+                                    <td>Pixel Pitch</td>
+                                    <td>2.6</td>
+                                </tr>
+                                <tr>
+                                    <td>IC driver</td>
+                                    <td>3840Hz</td>
+                                </tr>
+                                <tr>
+                                    <td>Cabinet size</td>
+                                    <td>500mm*500mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Module size</td>
+                                    <td>250mm*250mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Driver mode</td>
+                                    <td>1/32 scan</td>
+                                </tr>
+                                <tr>
+                                    <td>Peso pieza</td>
+                                    <td>0,35 kg</td>
+                                </tr>
+                                <tr>
+                                    <td>Color Configuration</td>
+                                    <td>1R1G1B</td>
+                                </tr>
+                                <tr>
+                                    <td>Tamaño largo*alto</td>
+                                    <td>15000mm/1000mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Resolución largo*alto</td>
+                                    <td>5769/385</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Screen resolution</td>
+                                    <td>2218935</td>
+                                </tr>
+                                <tr>
+                                    <td>Cantidad de módulos</td>
+                                    <td>240 pcs</td>
+                                </tr>
+                                <tr>
+                                    <td>Cantidad de cabinas</td>
+                                    <td>60 piezas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-6">
+                        <span class="price-tag">11.998,00 €</span>
+                        <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                            <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                        </button>
+                    </div>
+
+                    <!-- Botón GALERÍA en cada subsección -->
+                    <button onclick="openGallery('gimnasio-room1-b', 3)" class="gallery-btn-subsection btn-gimnasio">
+                        <i class="fas fa-images"></i> Ver Galería Completa
+                    </button>
+                </div>
+
+                <div class="subsection-card" style="color: var(--gimnasio-color);">
+                    <h3 class="text-xl font-bold text-gimnasio mb-4">Room 2 - Pantalla A (Transparente)</h3>
+                    <p class="text-slate-600 mb-4"><strong>Modelo:</strong> P6.25MM Super Film High Brightness
+                        Transparent Led Display</p>
+
+                    <button class="toggle-table-btn" onclick="toggleTable('gimnasio-room2a-table')">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Ver especificaciones técnicas</span>
+                    </button>
+
+                    <div id="gimnasio-room2a-table" class="table-container">
+                        <table class="specs-table">
+                            <thead>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Especificación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pixel Pitch</td>
+                                    <td>6.25 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Pixel Density</td>
+                                    <td>25600 dots/m²</td>
+                                </tr>
+                                <tr>
+                                    <td>IC driver</td>
+                                    <td>3840Hz</td>
+                                </tr>
+                                <tr>
+                                    <td>Transparencia</td>
+                                    <td>80%</td>
+                                </tr>
+                                <tr>
+                                    <td>Driver Mode</td>
+                                    <td>Static</td>
+                                </tr>
+                                <tr>
+                                    <td>Color Configuration</td>
+                                    <td>1R1G1B</td>
+                                </tr>
+                                <tr>
+                                    <td>Peso pieza</td>
+                                    <td>0,35 kg</td>
+                                </tr>
+                                <tr>
+                                    <td>Tamaño largo*alto</td>
+                                    <td>6000 × 1000 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Resolución largo*alto</td>
+                                    <td>960 × 160 píxeles</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Screen resolution</td>
+                                    <td>153.600 dots</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-6">
+                        <span class="price-tag">5.911,00 €</span>
+                        <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                            <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                        </button>
+                    </div>
+
+                    <!-- Botón GALERÍA en cada subsección -->
+                    <button onclick="openGallery('gimnasio-room2-a', 3)" class="gallery-btn-subsection btn-gimnasio">
+                        <i class="fas fa-images"></i> Ver Galería Completa
+                    </button>
+                </div>
+
+                <div class="subsection-card" style="color: var(--gimnasio-color);">
+                    <h3 class="text-xl font-bold text-gimnasio mb-4">Room 2 - Pantalla B (Esquina)</h3>
+                    <p class="text-slate-600 mb-4"><strong>Modelo:</strong> INDOOR X P2.6 SMD LED DISPLAY</p>
+                    <p class="text-sm text-slate-500 mb-2">Unimos las 2 pantallas en 1 haciendo la esquina.</p>
+
+                    <button class="toggle-table-btn" onclick="toggleTable('gimnasio-room2b-table')">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Ver especificaciones técnicas</span>
+                    </button>
+
+                    <div id="gimnasio-room2b-table" class="table-container">
+                        <table class="specs-table">
+                            <thead>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Pantalla Larga (Horizontal)</th>
+                                    <th>Pantalla Corta (Vertical)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LED TYPE</td>
+                                    <td>SMD X2.60</td>
+                                    <td>SMD X2.60</td>
+                                </tr>
+                                <tr>
+                                    <td>Pixel Pitch</td>
+                                    <td>2.6 mm</td>
+                                    <td>2.6 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>IC driver</td>
+                                    <td>3840Hz</td>
+                                    <td>3840Hz</td>
+                                </tr>
+                                <tr>
+                                    <td>Cabinet size</td>
+                                    <td>500mm × 500mm</td>
+                                    <td>500mm × 500mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Module size</td>
+                                    <td>250mm × 250mm</td>
+                                    <td>250mm × 250mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Driver mode</td>
+                                    <td>1/32 scan</td>
+                                    <td>1/32 scan</td>
+                                </tr>
+                                <tr>
+                                    <td>Peso pieza</td>
+                                    <td>0,35 kg</td>
+                                    <td>0,35 kg</td>
+                                </tr>
+                                <tr>
+                                    <td>Color Configuration</td>
+                                    <td>1R1G1B</td>
+                                    <td>1R1G1B</td>
+                                </tr>
+                                <tr>
+                                    <td>Tamaño largo × alto</td>
+                                    <td>15000 × 1000 mm</td>
+                                    <td>5000 × 1000 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Resolución largo × alto</td>
+                                    <td>5769 × 385 píxeles</td>
+                                    <td>1923 × 385 píxeles</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Screen resolution</td>
+                                    <td>2.218.935 píxeles</td>
+                                    <td>739.645 píxeles</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"
+                                        style="text-align: center; background-color: #f0f9ff; font-weight: bold;">
+                                        Resolución combinada total: <span
+                                            style="color: var(--gimnasio-color);">2.958.580 píxeles</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-6">
+                        <span class="price-tag">15.707,00 €</span>
+                        <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                            <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                        </button>
+                    </div>
+
+                    <!-- Botón GALERÍA en cada subsección -->
+                    <button onclick="openGallery('gimnasio-room2-b', 3)" class="gallery-btn-subsection btn-gimnasio">
+                        <i class="fas fa-images"></i> Ver Galería Completa
+                    </button>
+                </div>
+
+                <div class="subsection-card" style="color: var(--gimnasio-color);">
+                    <h3 class="text-xl font-bold text-gimnasio mb-4">Room 3</h3>
+                    <p class="text-slate-600 mb-4"><strong>Modelo:</strong> INDOOR X P1.95 LED DISPLAY</p>
+
+                    <button class="toggle-table-btn" onclick="toggleTable('gimnasio-room3-table')">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Ver especificaciones técnicas</span>
+                    </button>
+
+                    <div id="gimnasio-room3-table" class="table-container">
+                        <table class="specs-table">
+                            <thead>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Especificación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LED TYPE</td>
+                                    <td>SMD X 1.95</td>
+                                </tr>
+                                <tr>
+                                    <td>Pixel Pitch</td>
+                                    <td>1.95 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>IC driver</td>
+                                    <td>3840Hz</td>
+                                </tr>
+                                <tr>
+                                    <td>Cabinet size</td>
+                                    <td>500mm × 500mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Module size</td>
+                                    <td>250mm × 250mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Driver mode</td>
+                                    <td>1/32 scan</td>
+                                </tr>
+                                <tr>
+                                    <td>Peso pieza</td>
+                                    <td>0,35 kg</td>
+                                </tr>
+                                <tr>
+                                    <td>Color Configuration</td>
+                                    <td>1R1G1B</td>
+                                </tr>
+                                <tr>
+                                    <td>Tamaño largo × alto</td>
+                                    <td>4000 × 1000 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Resolución largo × alto</td>
+                                    <td>2051 × 513 píxeles</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Screen resolution</td>
+                                    <td>1.051.940 píxeles</td>
+                                </tr>
+                                <tr>
+                                    <td>Cantidad de módulos</td>
+                                    <td>64 piezas</td>
+                                </tr>
+                                <tr>
+                                    <td>Cantidad de cabinas</td>
+                                    <td>16 piezas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-6">
+                        <span class="price-tag">3.977,00 €</span>
+                        <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                            <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                        </button>
+                    </div>
+
+                    <!-- Botón GALERÍA en cada subsección -->
+                    <button onclick="openGallery('gimnasio-room3', 3)" class="gallery-btn-subsection btn-gimnasio">
+                        <i class="fas fa-images"></i> Ver Galería Completa
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: ESCALERA PANEL HORARIOS -->
+        <section id="escalera-horarios" class="section-card scroll-mt-24 section-escalera-horarios">
+            <div class="flex items-center mb-6">
+                <span class="section-number escalera-horarios">03</span>
+                <h2 class="text-3xl font-black text-slate-900">Pantallas LED para la escalera panel horarios</h2>
+            </div>
+            <p class="text-lg text-slate-600 mb-6">
+            </p>
+            <p class="text-slate-600 mb-4"><strong>Modelo:</strong> INDOOR X P2.6 SMD LED DISPLAY</p>
+
+            <button class="toggle-table-btn" onclick="toggleTable('escalera1')">
+                <i class="fas fa-chevron-down"></i>
+                <span>Ver especificaciones técnicas</span>
+            </button>
+
+            <div id="escalera1" class="table-container">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Especificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LED TYPE</td>
+                            <td>SMD X2.60</td>
+                        </tr>
+                        <tr>
+                            <td>Pixel Pitch</td>
+                            <td>2.6</td>
+                        </tr>
+                        <tr>
+                            <td>IC driver</td>
+                            <td>3840Hz</td>
+                        </tr>
+                        <tr>
+                            <td>Cabinet size</td>
+                            <td>500mm*500mm</td>
+                        </tr>
+                        <tr>
+                            <td>Module size</td>
+                            <td>250mm*250mm</td>
+                        </tr>
+                        <tr>
+                            <td>Driver mode</td>
+                            <td>1/32 scan</td>
+                        </tr>
+                        <tr>
+                            <td>Peso pieza</td>
+                            <td>0,35 kg</td>
+                        </tr>
+                        <tr>
+                            <td>Color Configuration</td>
+                            <td>1R1G1B</td>
+                        </tr>
+                        <tr>
+                            <td>Tamaño largo*alto</td>
+                            <td>3000mm/4500mm</td>
+                        </tr>
+                        <tr>
+                            <td>Resolución largo*alto</td>
+                            <td>1154/1731</td>
+                        </tr>
+                        <tr>
+                            <td>Total Screen resolution</td>
+                            <td>1997041</td>
+                        </tr>
+                        <tr>
+                            <td>Cantidad de módulos</td>
+                            <td>216 pcs</td>
+                        </tr>
+                        <tr>
+                            <td>Cantidad de cabinas</td>
+                            <td>54 pcs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6">
+                <span class="price-tag">10.838,50 €</span>
+                <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                    <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                </button>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button onclick="openGallery('escalera-horarios', 3)" class="gallery-btn-section btn-escalera-horarios">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+                <p class="text-sm text-slate-500 mt-3 text-center">3 imágenes + 2 videos demostrativos</p>
+            </div>
+        </section>
+
+        <!-- Sección 4: ESCALERA SALIDA -->
+        <section id="escalera-salida" class="section-card scroll-mt-24 section-escalera-salida">
+            <div class="flex items-center mb-6">
+                <span class="section-number escalera-salida">04</span>
+                <h2 class="text-3xl font-black text-slate-900">Pantallas LED para la escalera de salidas</h2>
+            </div>
+            <p class="text-lg text-slate-600 mb-6">
+            </p>
+            <p class="text-slate-600 mb-4"><strong>Modelo:</strong> INDOOR X P1.95 LED DISPLAY</p>
+
+            <button class="toggle-table-btn" onclick="toggleTable('escalera2')">
+                <i class="fas fa-chevron-down"></i>
+                <span>Ver especificaciones técnicas</span>
+            </button>
+
+            <div id="escalera2" class="table-container">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Especificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LED TYPE</td>
+                            <td>SMD X 1.95</td>
+                        </tr>
+                        <tr>
+                            <td>Pixel Pitch</td>
+                            <td>1.95</td>
+                        </tr>
+                        <tr>
+                            <td>IC driver</td>
+                            <td>3840Hz</td>
+                        </tr>
+                        <tr>
+                            <td>Cabinet size</td>
+                            <td>500mm*500mm</td>
+                        </tr>
+                        <tr>
+                            <td>Module size</td>
+                            <td>250mm*250mm</td>
+                        </tr>
+                        <tr>
+                            <td>Driver mode</td>
+                            <td>1/32 scan</td>
+                        </tr>
+                        <tr>
+                            <td>Peso pieza</td>
+                            <td>0,35 kg</td>
+                        </tr>
+                        <tr>
+                            <td>Color Configuration</td>
+                            <td>1R1G1B</td>
+                        </tr>
+                        <tr>
+                            <td>Tamaño largo*alto</td>
+                            <td>3000mm/1000mm</td>
+                        </tr>
+                        <tr>
+                            <td>Resolución largo*alto</td>
+                            <td>2051/513</td>
+                        </tr>
+                        <tr>
+                            <td>Total Screen resolution</td>
+                            <td>1051940</td>
+                        </tr>
+                        <tr>
+                            <td>Cantidad de módulos</td>
+                            <td>64 pcs</td>
+                        </tr>
+                        <tr>
+                            <td>Cantidad de cabinas</td>
+                            <td>16 pcs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6">
+                <span class="price-tag">3.126,00 €</span>
+                <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                    <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                </button>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button onclick="openGallery('escalera-salida', 3)" class="gallery-btn-section btn-escalera-salida">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+                <p class="text-sm text-slate-500 mt-3 text-center">3 imágenes + 2 videos demostrativos</p>
+            </div>
+        </section>
+
+        <!-- Sección 5: VESTUARIO MASCULINO -->
+        <section id="vestuario-masculino" class="section-card scroll-mt-24 section-vestuario">
+            <div class="flex items-center mb-6">
+                <span class="section-number vestuario">05</span>
+                <h2 class="text-3xl font-black text-slate-900">Vestuario Masculino</h2>
+            </div>
+            <p class="text-lg text-slate-600 mb-6">
+            </p>
+            <p class="text-slate-600 mb-4"><strong>Modelo:</strong> INDOOR X P2.6 SMD LED DISPLAY</p>
+
+            <button class="toggle-table-btn" onclick="toggleTable('vest-m')">
+                <i class="fas fa-chevron-down"></i>
+                <span>Ver especificaciones técnicas</span>
+            </button>
+
+            <div id="vest-m" class="table-container">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Especificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LED TYPE</td>
+                            <td>SMD X2.60</td>
+                        </tr>
+                        <tr>
+                            <td>Pixel Pitch</td>
+                            <td>2.6</td>
+                        </tr>
+                        <tr>
+                            <td>IC driver</td>
+                            <td>3840Hz</td>
+                        </tr>
+                        <tr>
+                            <td>Cabinet size</td>
+                            <td>500mm*500mm</td>
+                        </tr>
+                        <tr>
+                            <td>Module size</td>
+                            <td>250mm*250mm</td>
+                        </tr>
+                        <tr>
+                            <td>Driver mode</td>
+                            <td>1/32 scan</td>
+                        </tr>
+                        <tr>
+                            <td>Peso pieza</td>
+                            <td>0,35 kg</td>
+                        </tr>
+                        <tr>
+                            <td>Color Configuration</td>
+                            <td>1R1G1B</td>
+                        </tr>
+                        <tr>
+                            <td>Tamaño largo*alto</td>
+                            <td>5000/1000mm</td>
+                        </tr>
+                        <tr>
+                            <td>Resolución largo*alto</td>
+                            <td>1923/385</td>
+                        </tr>
+                        <tr>
+                            <td>Total Screen resolution</td>
+                            <td>739645</td>
+                        </tr>
+                        <tr>
+                            <td>Cantidad de módulos</td>
+                            <td>80 pcs</td>
+                        </tr>
+                        <tr>
+                            <td>Cantidad de cabinas</td>
+                            <td>20 pcs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6">
+                <span class="price-tag">3.275,00 €</span>
+                <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                    <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                </button>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button onclick="openGallery('vestuario-masculino', 3)" class="gallery-btn-section btn-vestuario">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+                <p class="text-sm text-slate-500 mt-3 text-center">3 imágenes + 2 videos demostrativos</p>
+            </div>
+        </section>
+
+        <!-- Sección 6: VESTUARIO FEMENINO -->
+        <section id="vestuario-femenino" class="section-card scroll-mt-24 section-vestuario">
+            <div class="flex items-center mb-6">
+                <span class="section-number vestuario">06</span>
+                <h2 class="text-3xl font-black text-slate-900">Vestuario Femenino</h2>
+            </div>
+            <p class="text-lg text-slate-600 mb-6">
+            </p>
+            <p class="text-slate-600 mb-4"><strong>Modelo:</strong> PANTALLA MÓVIL TRIPLE DE GRAN DEFINICIÓN</p>
+            <span class="price-tag">2.500,00 €</span>
+            <!--<div class="mt-6">
+                <span class="price-tag">2.500,00 €</span>
+                <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                    <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                </button>
+            </div>-->
+
+            <div class="mt-8 text-center">
+                <button onclick="openGallery('vestuario-femenino', 3)" class="gallery-btn-section btn-vestuario">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+                <p class="text-sm text-slate-500 mt-3 text-center">3 imágenes + 2 videos demostrativos</p>
+            </div>
+        </section>
+
+        <!-- Sección 7: HALL DE ENTRADA -->
+        <section id="hall-entrada" class="section-card scroll-mt-24 section-hall">
+            <div class="flex items-center mb-6">
+                <span class="section-number hall">07</span>
+                <h2 class="text-3xl font-black text-slate-900">Hall de Entrada</h2>
+            </div>
+            <p class="text-lg text-slate-600 mb-8">
+            </p>
+
+            <!-- Subsección 1: Pantalla Pared -->
+            <!-- Subsección 1: Pantalla Pared -->
+            <div class="subsection-card mb-6" style="color: var(--hall-color);">
+                <h3 class="text-xl font-bold text-hall mb-4">1) Pantalla Pared</h3>
+                <p class="text-slate-600 mb-4"><strong>Modelo:</strong> INDOOR X P1.95 LED DISPLAY</p>
+
+                <button class="toggle-table-btn" onclick="toggleTable('hall-pared-table')">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Ver especificaciones técnicas</span>
+                </button>
+
+                <div id="hall-pared-table" class="table-container">
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Especificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LED TYPE</td>
+                                <td>SMD X 1.95</td>
+                            </tr>
+                            <tr>
+                                <td>Pixel Pitch</td>
+                                <td>1.95 mm</td>
+                            </tr>
+                            <tr>
+                                <td>IC driver</td>
+                                <td>3840Hz</td>
+                            </tr>
+                            <tr>
+                                <td>Cabinet size</td>
+                                <td>500mm × 500mm</td>
+                            </tr>
+                            <tr>
+                                <td>Module size</td>
+                                <td>250mm × 250mm</td>
+                            </tr>
+                            <tr>
+                                <td>Driver mode</td>
+                                <td>1/32 scan</td>
+                            </tr>
+                            <tr>
+                                <td>Peso pieza</td>
+                                <td>0,35 kg</td>
+                            </tr>
+                            <tr>
+                                <td>Color Configuration</td>
+                                <td>1R1G1B</td>
+                            </tr>
+                            <tr>
+                                <td>Tamaño largo × alto</td>
+                                <td>2500 × 3000 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Resolución largo × alto</td>
+                                <td>1282 × 1538 píxeles</td>
+                            </tr>
+                            <tr>
+                                <td>Total Screen resolution</td>
+                                <td>1.972.387 píxeles</td>
+                            </tr>
+                            <tr>
+                                <td>Cantidad de módulos</td>
+                                <td>120 piezas</td>
+                            </tr>
+                            <tr>
+                                <td>Cantidad de cabinas</td>
+                                <td>30 piezas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6">
+                    <span class="price-tag">7.760,50 €</span>
+                    <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                        <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                    </button>
+                </div>
+
+                <!-- Botón GALERÍA en cada subsección -->
+                <button onclick="openGallery('hall-pared', 3)" class="gallery-btn-subsection btn-hall">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+            </div>
+
+            <!-- Subsección 2: Puerta de entrada -->
+            <!-- Subsección 2: Puerta de entrada -->
+            <div class="subsection-card" style="color: var(--hall-color);">
+                <h3 class="text-xl font-bold text-hall mb-4">2) Puerta de entrada</h3>
+                <p class="text-slate-600 mb-4"><strong>Modelo:</strong> P6.25MM Super Film High Brightness Transparent
+                    Led Display</p>
+
+                <button class="toggle-table-btn" onclick="toggleTable('hall-puerta-table')">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Ver especificaciones técnicas</span>
+                </button>
+
+                <div id="hall-puerta-table" class="table-container">
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Especificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pixel Pitch</td>
+                                <td>6.25 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Pixel Density</td>
+                                <td>25600 dots/m²</td>
+                            </tr>
+                            <tr>
+                                <td>IC driver</td>
+                                <td>3840Hz</td>
+                            </tr>
+                            <tr>
+                                <td>Transparencia</td>
+                                <td>80%</td>
+                            </tr>
+                            <tr>
+                                <td>Driver Mode</td>
+                                <td>Static</td>
+                            </tr>
+                            <tr>
+                                <td>Color Configuration</td>
+                                <td>1R1G1B</td>
+                            </tr>
+                            <tr>
+                                <td>Peso pieza</td>
+                                <td>0,35 kg</td>
+                            </tr>
+                            <tr>
+                                <td>Tamaño largo × alto</td>
+                                <td>1125 × 2500 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Resolución largo × alto</td>
+                                <td>180 × 400 píxeles</td>
+                            </tr>
+                            <tr>
+                                <td>Total Screen resolution</td>
+                                <td>72.000 dots</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6">
+                    <span class="price-tag">9.736,00 €</span>
+                    <button class="specs-btn" onclick="openSpecsFromButton(this)">
+                        <i class="fas fa-info-circle mr-2"></i>Ver más especificaciones
+                    </button>
+                </div>
+
+                <!-- Botón GALERÍA en cada subsección -->
+                <button onclick="openGallery('hall-puerta', 3)" class="gallery-btn-subsection btn-hall">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+            </div>
+        </section>
+
+        <!-- Sección 8: LETRAS EN LA CALLE -->
+        <section id="letras-calle" class="section-card scroll-mt-24 section-letras">
+            <div class="flex items-center mb-6">
+                <span class="section-number letras">08</span>
+                <h2 class="text-3xl font-black text-slate-900">Letras en la Calle</h2>
+            </div>
+            <p class="text-lg text-slate-600 mb-6">
+                Instalación de la palabra "Fluvial" en la fachada exterior del club.
+                Letras LED de gran tamaño y alta visibilidad para captar atención desde la vía pública.
+            </p>
+            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                <p class="text-blue-800 font-semibold">Propuesta personalizada disponible.</p>
+                <p class="text-blue-600 mt-2">Contacta con nosotros para recibir un diseño específico y presupuesto
+                    detallado.</p>
+            </div>
+
+            <div class="mt-6">
+                <span class="price-tag">29.400€</span>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button onclick="openGallery('letras-calle', 3)" class="gallery-btn-section btn-letras">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+                <p class="text-sm text-slate-500 mt-3 text-center">3 imágenes + 2 videos demostrativos</p>
+            </div>
+        </section>
+
+        <!-- Sección 9: PANTALLAS MÓVILES PARA EXTERIORES -->
+        <section id="pantallas-moviles" class="section-card scroll-mt-24 section-moviles">
+            <div class="flex items-center mb-6">
+                <span class="section-number moviles">09</span>
+                <h2 class="text-3xl font-black text-slate-900">Pantallas móviles para exteriores</h2>
+            </div>
+            <p class="text-lg text-slate-600 mb-6">
+                Para la realización de actividades al aire libre proponemos la compra de 3 posters que se pueden unir en
+                una sola pantalla si se quiere.
+                Totalmente móviles para instalar en cualquier sitio.
+            </p>
+            <p class="text-slate-600 mb-4"><strong>Medidas por pantalla:</strong> 1m x 1,75m</p>
+            <p class="text-slate-600 mb-6"><strong>Característica principal:</strong> 3 pantallas independientes que
+                pueden unirse para formar una pantalla grande continua.</p>
+
+            <div class="mt-6">
+                <span class="price-tag">2.900 € x Unidad</span>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button onclick="openGallery('pantallas-moviles', 3)" class="gallery-btn-section btn-moviles">
+                    <i class="fas fa-images"></i> Ver Galería Completa
+                </button>
+                <p class="text-sm text-slate-500 mt-3 text-center">3 imágenes + 2 videos demostrativos</p>
+            </div>
+        </section>
+
+        <!-- Sección 10: CRYSTALBLINK -->
+        <section id="crystalblink" class="crystalblink-section scroll-mt-24">
+            <div class="crystalblink-content">
+                <div class="flex items-center mb-6">
+                    <span class="section-number crystalblink" style="background-color: var(--crystal-color);">10</span>
+                    <h2 class="text-3xl font-black text-white">CrystalBlink</h2>
+                </div>
+
+                <!-- Hero CrystalBlink -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+                    <div>
+                        <div class="inline-block bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+                            NUEVA TECNOLOGÍA
+                        </div>
+                        <h1 class="text-4xl lg:text-5xl font-black mb-4 text-white">
+                            Crystal<span
+                                style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Blink</span>
+                        </h1>
+                        <h2 class="text-xl text-blue-200 mb-6">
+                            Privacidad inteligente a la velocidad de la luz.
+                        </h2>
+                        <p class="text-blue-100 mb-8">
+                            Transforma tus cristales en cortinas digitales en menos de 1 segundo.
+                            La solución definitiva para estadios, oficinas de alta dirección y espacios VIP.
+                        </p>
+
+                        <!-- PRECIO AÑADIDO -->
+                        <div class="flex items-center justify-start mb-8">
+                            <div
+                                class="bg-gradient-to-r from-blue-900/80 to-blue-800/80 border border-blue-700/50 text-white px-6 py-3 rounded-xl font-bold text-lg backdrop-blur-sm shadow-lg">
+                                <i class="fas fa-tag mr-2"></i>
+                                <span>95€ x Metro Cuadrado + IVA</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <button id="toggleCrystalBtn"
+                                class="bg-white text-crystal-primary px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                                Activar CrystalBlink
+                            </button>
+                            <button
+                                class="bg-transparent border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+                                Hablar con un experto
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Panel interactivo -->
+                    <div class="flex justify-center">
+                        <div id="crystalPanel" class="smart-glass-panel">
+                            <div class="glass-reflection"></div>
+                            <div class="glass-content">
+                                <span id="statusPill" class="status-pill">👁️ MODO TRANSPARENTE</span>
+                                <div id="projectedLogo" class="projected-logo">
+                                    CRYSTAL<br />BLINK
+                                </div>
+                                <div id="inactiveLogo" class="inactive-logo">
+                                    CrystalBlink<br /> <span class="small-text">sin activar</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Value Proposition -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div class="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+                        <span class="text-3xl">⚡</span>
+                        <div>
+                            <h4 class="text-white font-bold">Instantáneo</h4>
+                            <p class="text-blue-200 text-sm">Reacción en &lt;1 segundo</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+                        <span class="text-3xl">🛡️</span>
+                        <div>
+                            <h4 class="text-white font-bold">Privacidad 100%</h4>
+                            <p class="text-blue-200 text-sm">Bloqueo visual total</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+                        <span class="text-3xl">🎨</span>
+                        <div>
+                            <h4 class="text-white font-bold">Personalizable</h4>
+                            <p class="text-blue-200 text-sm">Logos y proyección</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Videos CrystalBlink -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-white mb-8 text-center">CrystalBlink en Acción</h3>
+                    <div class="videos-container">
+                        <div class="video-wrapper">
+                            <video class="modal-video" controls loop>
+                                <source src="./assets/crystalblink/video-1.mp4" type="video/mp4">
+                                Tu navegador no soporta videos HTML5.
+                            </video>
+                            <div class="video-caption">Transición instantánea</div>
+                        </div>
+                        <div class="video-wrapper">
+                            <video class="modal-video" controls loop>
+                                <source src="./assets/crystalblink/video-2.mp4" type="video/mp4">
+                                Tu navegador no soporta videos HTML5.
+                            </video>
+                            <div class="video-caption">Diferentes opacidades y colores</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logos">
-                    <div class="footer-logo-placeholder">MERCHANDREAM</div>
-                    <div class="footer-logo-placeholder">CB BREOGÁN</div>
+    <footer class="bg-slate-900 py-12 text-slate-500 text-sm mt-12" id="contacto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
+                <div class="text-center">
+                    <img src="https://www.clubfluviallugo.com/assets/images/logo.png" alt="Club Fluvial Lugo"
+                        class="h-16 mx-auto mb-4">
+                    <p class="text-white font-bold">CLUB FLUVIAL LUGO</p>
                 </div>
 
-                <div class="footer-info">
-                    <p>Colaboración exclusiva para productos de merchandising premium</p>
-                    <p>Email: direccion.general@merchandream.es | Tel: +34 605 195 744</p>
-                    <p>Especialistas en productos emocionales para clubs deportivos</p>
-                </div>
+                <div class="hidden md:block h-16 w-px bg-slate-700"></div>
 
-                <div class="copyright">
-                    <p>&copy; 2025 MERCHANDREAM × CB BREogán. Todos los derechos reservados.</p>
-                    <p>Productos exclusivos para la directiva del club</p>
+                <div class="text-center">
+                    <img src="./assets/Dibujo01-NoBAK.png" alt="MERCHANDREAM" class="h-16 mx-auto mb-4">
+                    <p class="text-slate-400">Tecnología LED Profesional para Clubes Deportivos</p>
                 </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-8">
+                <a href="mailto:direccion.general@merchandream.es" target="_blank"
+                    class="hover:text-white transition-colors flex items-center bg-white/5 px-6 py-3 rounded-full border border-white/10 italic">
+                    <i class="fas fa-envelope mr-2 text-club-primary"></i> direccion.general@merchandream.es
+                </a>
+                <a href="tel:+34605195744"
+                    class="hover:text-white transition-colors flex items-center bg-white/5 px-6 py-3 rounded-full border border-white/10 italic">
+                    <i class="fas fa-phone mr-2 text-club-primary"></i> +34 605 195 744
+                </a>
+            </div>
+            <div class="pt-8 border-t border-white/5 text-xs uppercase tracking-widest font-bold">
+                &copy; 2026 Club Fluvial Lugo & MERCHANDREAM. 10 soluciones LED específicas para cada espacio del club.
             </div>
         </div>
     </footer>
 
+    <!-- Modal Único para Galerías -->
+    <div id="galleryModal" class="modal">
+        <div class="modal-content">
+            <button onclick="closeModal()" class="btn-close-xl" title="Cerrar">&times;</button>
+            <h3 id="modalTitle"
+                class="text-3xl font-black italic uppercase mb-6 border-l-8 border-club-primary pl-6 text-slate-800">
+            </h3>
+
+            <div class="carousel-container">
+                <button id="prevBtn" class="carousel-nav prev hidden" onclick="prevSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div id="carouselTrack" class="carousel-track">
+                    <!-- Las imágenes se insertan dinámicamente -->
+                </div>
+
+                <button id="nextBtn" class="carousel-nav next" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- 2 Videos lado a lado -->
+            <div class="videos-container">
+                <div class="video-wrapper">
+                    <video id="modalVideo1" class="modal-video" controls loop>
+                        <!-- La fuente del video se inserta dinámicamente -->
+                    </video>
+                    <div class="video-caption">Video demostrativo 1</div>
+                </div>
+                <div class="video-wrapper">
+                    <video id="modalVideo2" class="modal-video" controls loop>
+                        <!-- La fuente del video se inserta dinámicamente -->
+                    </video>
+                    <div class="video-caption">Video demostrativo 2</div>
+                </div>
+            </div>
+
+            <div id="modalDescription" class="mt-6 text-gray-600 text-lg">
+                <!-- Descripción dinámica -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Especificaciones Técnicas (NUEVO) -->
+    <div id="specsModal" class="specs-modal">
+        <div class="specs-modal-content">
+            <div class="specs-modal-header">
+                <h3 id="specsModalTitle" class="specs-modal-title">Especificaciones Técnicas</h3>
+                <button onclick="closeSpecsModal()" class="specs-modal-close" title="Cerrar">&times;</button>
+            </div>
+            <div id="specsModalContent" class="specs-modal-body">
+                <!-- El contenido de las especificaciones se cargará aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Técnico CrystalBlink -->
+    <div id="techModal" class="modal">
+        <div class="modal-content">
+            <button onclick="closeTechModal()" class="btn-close-xl" title="Cerrar">&times;</button>
+
+            <div class="modal-header text-center mb-8">
+                <h2 class="text-3xl font-bold text-crystal-primary mb-2">Ficha Técnica CrystalBlink</h2>
+                <p class="text-gray-600">Dimensiones y Rendimiento de Película Inteligente Autoadhesiva</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Tabla 1: Dimensiones -->
+                <div>
+                    <h3 class="text-xl font-bold text-crystal-primary mb-4">1. Dimensiones del Producto</h3>
+                    <div class="table-container">
+                        <table class="specs-table">
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Especificación / Grosor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Grosor Total (sin film protector)</td>
+                                    <td>0.47mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Película PDLC</td>
+                                    <td>0.38mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Pegamento AB</td>
+                                    <td>90μm</td>
+                                </tr>
+                                <tr>
+                                    <td>Film Protector pE</td>
+                                    <td>35μm</td>
+                                </tr>
+                                <tr>
+                                    <td>Film de liberación pET</td>
+                                    <td>50μm</td>
+                                </tr>
+                                <tr>
+                                    <td>Ancho Personalizado (Hoja)</td>
+                                    <td>1000, 1200, 1500, 1800 (mm)</td>
+                                </tr>
+                                <tr>
+                                    <td>Largo Personalizado (Hoja)</td>
+                                    <td>Según requerimientos</td>
+                                </tr>
+                                <tr>
+                                    <td>Ancho (Rollo)</td>
+                                    <td>1020, 1220, 1520, 1820 (mm)</td>
+                                </tr>
+                                <tr>
+                                    <td>Largo (Rollo)</td>
+                                    <td>≤50m / rollo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tabla 2: Propiedades Físicas -->
+                <div>
+                    <h3 class="text-xl font-bold text-crystal-primary mb-4">2. Propiedades Físicas</h3>
+                    <div class="table-container">
+                        <table class="specs-table">
+                            <thead>
+                                <tr>
+                                    <th>Propiedad</th>
+                                    <th>Estado / Resultado</th>
+                                    <th>Estándar de Prueba</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Voltaje de Trabajo</td>
+                                    <td>48V/AC o 60V/AC</td>
+                                    <td>Analizador de potencia</td>
+                                </tr>
+                                <tr>
+                                    <td>Consumo de Energía</td>
+                                    <td>3.7W/m² (Encendido)</td>
+                                    <td>Autotransformador</td>
+                                </tr>
+                                <tr>
+                                    <td>Tiempo de Respuesta</td>
+                                    <td>Off → On: ≤ 60ms | On → Off: ≤ 20ms</td>
+                                    <td>Tester LCD</td>
+                                </tr>
+                                <tr>
+                                    <td>Temperatura de Trabajo</td>
+                                    <td>-20°C a 70°C</td>
+                                    <td>Tester humedad/temperatura</td>
+                                </tr>
+                                <tr>
+                                    <td>Vida Útil</td>
+                                    <td>&gt; 100,000 horas</td>
+                                    <td>GB18910.5-2008</td>
+                                </tr>
+                                <tr>
+                                    <td>Ciclos de Conmutación</td>
+                                    <td>&gt; 200 millones de veces</td>
+                                    <td>Tester de ciclos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tabla 3: Rendimiento Óptico -->
+                <div>
+                    <h3 class="text-xl font-bold text-crystal-primary mb-4">3. Rendimiento Óptico (Modelo RS-G2Z)</h3>
+                    <div class="table-container">
+                        <table class="specs-table">
+                            <thead>
+                                <tr>
+                                    <th>Estado</th>
+                                    <th>Haze (Neblina)</th>
+                                    <th>Transparencia</th>
+                                    <th>Bloqueo IR</th>
+                                    <th>Bloqueo UV</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>OFF (Opaco)</strong></td>
+                                    <td>100%</td>
+                                    <td>82.2%</td>
+                                    <td>73%</td>
+                                    <td>99.99%</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ON (Transparente)</strong></td>
+                                    <td>1.47%</td>
+                                    <td>90.4%</td>
+                                    <td>15%</td>
+                                    <td>99.4%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // LuckyDolls Data - Converted from React component
-        const tomokiProducts = [
-            {
-                title: "T-Real",
-                subtitle: "Tu figura gigante, a tamaño real que te inmortaliza con cada detalle.",
-                highlight: "Dimensiones: Hasta 2 metros",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
+        // ==============================================
+        // SISTEMA DE ESPECIFICACIONES TÉCNICAS
+        // ==============================================
+
+        // Datos de características procesados del txt
+        const modelosEspecificaciones = {
+            "INDOOR X P2.6 SMD LED DISPLAY": {
+                "Constitución LED": "Types",
+                "Brillo": "600-700cd/m²",
+                "Ángulo de visión": "Horizontal 160° Vertical 160°",
+                "Distancia mínima de visión": "≥2.6 metros",
+                "Escala de grises": "16bit",
+                "Temperatura de color": "8500K",
+                "Frecuencia de actualización": "3840Hz",
+                "Material": "Fundición a presión",
+                "Voltaje de entrada": "AC220V/50Hz o AC110V/60Hz",
+                "Consumo de energía (MAX/AVE)": "620W/m² - 310W/m²",
+                "MTBF": ">10,000 horas",
+                "Vida útil": "≥100,000 horas",
+                "Clasificación IP": "IP45",
+                "Temperatura de operación": "-20℃ ~ 50℃",
+                "Humedad de operación": "10% ~ 90%",
+                "Mantenimiento": "Frontal y trasero",
+                "Certificaciones": "CE, CCC, ROHS, ISO9001",
+                "Tiempo de garantía": "2 años",
+                "Sistema de control": "NovaStar",
+                "Fuente de alimentación": "5V 40A 220V"
             },
-            {
-                title: "T-10",
-                subtitle: "Espléndido para aquellos aficionados que quieran instalarlo en el salpicadero de sus vehículos, ya que lleva un adhesivo en la base.",
-                highlight: "Dimensiones: 10 centímetros",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80",
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
+            "Rolling Led Screen P2.6": {
+                "Constitución LED": "Types",
+                "Tamaño de LAMP": "GOB1415",
+                "Paso de píxel": "2.604 mm",
+                "Resolución del módulo": "192x24",
+                "Píxeles del módulo": "4609",
+                "Tamaño del módulo": "768pcs (562x62.5mm)",
+                "Resolución de pantalla (W*H)": "1536 x 1344",
+                "Tamaño de pantalla (W X H)": "4000 x 3500mm",
+                "Configuración de color": "1R1G1B",
+                "Densidad de píxeles": "147456 píxeles/m²",
+                "Resolución total de pantalla": "2064648",
+                "Brillo": "750 - 1000 cd/m²",
+                "Modo de control": "1/24 SCAN",
+                "Ángulo de visión": "Horizontal 140° Vertical 140°",
+                "Distancia mínima de visión": "≥2.6 metros",
+                "Escala de grises": "14bit",
+                "Temperatura de color": "8500K",
+                "Frecuencia de actualización": "3840Hz",
+                "Voltaje de entrada": "AC220V/50Hz o AC110V/60Hz",
+                "Consumo de energía (MAX/AVE)": "510/170W/m²",
+                "MTBF": ">10,000 horas",
+                "Vida útil": "≥100,000 horas",
+                "Clasificación IP (Frontal/Trasera)": "IP63/IP21",
+                "Temperatura de operación": "-20℃ ~ 50℃",
+                "Humedad de operación": "10% ~ 90%",
+                "Peso por módulo": "0.3 KG",
+                "Compatibilidad de fuente": "AV, DVI, HDMI, SDI, S-Video, DP, etc.",
+                "Tiempo de garantía": "2 años",
+                "Sistema de control": "NovaStar",
+                "Fuente de alimentación": "5V 40A 220V"
             },
-            {
-                title: "T-14",
-                subtitle: "Excelente también para vender en tienda como producto de retail y promociones.",
-                highlight: "Dimensiones: 14 centímetros",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
+            "INDOOR X P1.95 GOB LED DISPLAY": {
+                "Constitución LED": "Types",
+                "Brillo": "600-700cd/m²",
+                "Cantidad de módulos/cabinas": "112 piezas/28 piezas (7*4)",
+                "Ángulo de visión": "Horizontal 160° Vertical 160°",
+                "Distancia mínima de visión": "≥1.95 metros",
+                "Escala de grises": "16bit",
+                "Temperatura de color": "8500K",
+                "Frecuencia de actualización": "3840Hz",
+                "Material": "Hierro",
+                "Voltaje de entrada": "AC220V/50Hz o AC110V/60Hz",
+                "Consumo de energía (MAX/AVE)": "620W/m² - 310W/m²",
+                "MTBF": ">10,000 horas",
+                "Vida útil": "≥100,000 horas",
+                "Clasificación IP": "IP45",
+                "Temperatura de operación": "-20℃ ~ 50℃",
+                "Humedad de operación": "10% ~ 95%",
+                "Mantenimiento": "Frontal y trasero",
+                "Certificaciones": "CE, CCC, ROHS, ISO9001",
+                "Tiempo de garantía": "2 años",
+                "Sistema de control": "NovaStar",
+                "Fuente de alimentación": "5V 40A 220V"
             },
-            {
-                title: "T-18",
-                subtitle: "Perfecto para vender en tienda como producto de retail y promociones.",
-                highlight: "Dimensiones: 18 centímetros",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
+            "Pantalla rotativa Ten Layer Double-sided Rotating Screen": {
+                "Constitución LED": "Types",
+                "Modelo de producto": "P2.85",
+                "Tamaño de la caja de matriz": "750mm x 250mm",
+                "Entorno de aplicación": "Interior",
+                "Brillo": "800-1000cd/m²",
+                "Frecuencia de actualización": "3840Hz",
+                "Voltaje de entrada": "AC220V/50Hz o AC110V/60Hz",
+                "Vida útil": "≥100,000 horas",
+                "Base": "750mm*300mm",
+                "Altura total": "2.85m",
+                "Altura del suelo deportivo": "2.5m",
+                "Altura de la base": "0.3m",
+                "Distancia mínima de visión": "≥2.6 metros",
+                "Escala de grises": "14bit",
+                "MTBF": ">10,000 horas",
+                "Clasificación IP": "IP45",
+                "Temperatura de operación": "-30℃ ~ 80℃",
+                "Humedad de operación": "10% ~ 95%",
+                "Temperatura de color": "8500K",
+                "Certificaciones": "CE, CCC, ROHS, ISO9001",
+                "Compatibilidad de fuente": "AV, DVI, HDMI, SDI, S-Video, DP, etc.",
+                "Sistema de control": "NovaStar"
             },
-            {
-                title: "T-18 con sonido",
-                subtitle: "18 cm de actitud... con sonido incluido. ¡Hazte con ello!",
-                highlight: "Dimensiones: 18 centímetros",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
+            "P6.25MM Super Film High Brightness": {
+                "Brillo": "4000-4500cd/m²",
+                "Ángulo de visión": "Horizontal 140° Vertical 140°",
+                "Distancia mínima de visión": "≥6.25 metros",
+                "Escala de grises": "14bit",
+                "Temperatura de color": "8500K",
+                "Frecuencia de actualización": "3840Hz",
+                "Fuente de alimentación": "5V 40A 220V",
+                "Voltaje de entrada": "AC220V/50Hz o AC110V/60Hz",
+                "Consumo de energía (MAX/AVE)": "600W/m² - 240W/m²",
+                "MTBF": ">10,000 horas",
+                "Vida útil": "≥100,000 horas",
+                "Clasificación IP": "IP45",
+                "Temperatura de operación": "-20℃ ~ 80℃",
+                "Humedad de operación": "10% ~ 95%",
+                "Compatibilidad de fuente": "AV, DVI, HDMI, SDI, S-Video, DP, etc.",
+                "Certificaciones": "CE, CCC, ROHS, ISO9001"
             },
-            {
-                title: "T-40",
-                subtitle: "Diseñada para ser el centro de atención. Con sus imponentes 40 cm de altura, esta figura de poliresina es la pieza perfecta para exhibir en tu estantería, vitrina o escritorio.",
-                highlight: "Dimensiones: 40 centímetros",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                title: "T-Vintage",
-                subtitle: "Pensado para aquellos clubs que no tienen mascota ni jugadores estrella.",
-                highlight: "Dimensiones: 14 centímetros",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                title: "T-Holders",
-                subtitle: "Soportes cepillos de dientes, bolígrafos y tarjetas.",
-                highlight: "Todos los tamaños",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                title: "T-Pet",
-                subtitle: "Diseño específico para cada club.",
-                highlight: "Dimensiones: En todos los tamaños, el más recomendado, 14cm",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                title: "T-Figure",
-                subtitle: "Ejemplar para nuestros mitos y leyendas.",
-                highlight: "Todos los tamaños",
-                images: [
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1578301978014-0d18a2cef14a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ]
+            "INDOOR X P1.95 LED DISPLAY": {
+                "Constitución LED": "Types",
+                "Brillo": "600-700cd/m²",
+                "Ángulo de visión": "Horizontal 160° Vertical 160°",
+                "Distancia mínima de visión": "≥1.95 metros",
+                "Escala de grises": "16bit",
+                "Temperatura de color": "8500K",
+                "Frecuencia de actualización": "3840Hz",
+                "Material": "Hierro",
+                "Voltaje de entrada": "AC220V/50Hz o AC110V/60Hz",
+                "Consumo de energía (MAX/AVE)": "620W/m² - 310W/m²",
+                "MTBF": ">10,000 horas",
+                "Vida útil": "≥100,000 horas",
+                "Clasificación IP": "IP45",
+                "Temperatura de operación": "-20℃ ~ 50℃",
+                "Humedad de operación": "10% ~ 95%",
+                "Mantenimiento": "Frontal y trasero",
+                "Certificaciones": "CE, CCC, ROHS, ISO9001",
+                "Tiempo de garantía": "2 años",
+                "Sistema de control": "NovaStar",
+                "Fuente de alimentación": "5V 40A 220V"
             }
-        ];
+        };
 
-        // Gallery State
-        let selectedProduct = null;
-        let currentImageIndex = 0;
+        // Función mejorada para abrir especificaciones desde un botón
+        function openSpecsFromButton(button) {
+            // Buscar el contenedor de la opción específica (el div padre más cercano que contiene la opción)
+            let container = button.closest('div.mb-6, div:has(.price-tag)') || button.parentElement;
 
-        // DOM Elements
-        const luckydollsGrid = document.getElementById('luckydollsGrid');
-        const galleryModal = document.getElementById('galleryModal');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const closeModalBtn = document.getElementById('closeModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalHighlight = document.getElementById('modalHighlight');
-        const imageCounter = document.getElementById('imageCounter');
-        const prevButton = document.getElementById('prevButton');
-        const nextButton = document.getElementById('nextButton');
+            let modeloEncontrado = null;
 
-        // Initialize LuckyDolls Grid
-        function initLuckyDollsGrid() {
-            luckydollsGrid.innerHTML = '';
+            if (container) {
+                // Buscar texto que contenga "OPCIÓN" o directamente el nombre del modelo
+                const elementos = container.querySelectorAll('p, span, h3, h4');
 
-            tomokiProducts.forEach((product, index) => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card fade-in';
-                productCard.style.animationDelay = `${index * 0.1}s`;
+                // Primero: buscar "OPCIÓN X: [Nombre del modelo]"
+                for (const elemento of elementos) {
+                    const texto = elemento.textContent || '';
 
-                productCard.innerHTML = `
-                    <h3 class="product-title">${product.title}</h3>
-                    <p class="product-subtitle">${product.subtitle}</p>
-                    <p class="product-highlight">${product.highlight}</p>
-                    <button class="gallery-button" data-index="${index}">
-                        Ver imágenes (${product.images.length})
-                    </button>
-                `;
+                    if (texto.includes('OPCIÓN')) {
+                        // Extraer el texto después de "OPCIÓN X: "
+                        const match = texto.match(/OPCIÓN\s*\d+:\s*(.+)/i);
+                        if (match && match[1]) {
+                            const textoOpcion = match[1].trim();
 
-                luckydollsGrid.appendChild(productCard);
-            });
+                            // Buscar coincidencia con los modelos disponibles
+                            for (const modelo in modelosEspecificaciones) {
+                                if (textoOpcion.includes(modelo) || modelo.includes(textoOpcion.split('(')[0].trim())) {
+                                    modeloEncontrado = modelo;
+                                    break;
+                                }
+                            }
+                            if (modeloEncontrado) break;
+                        }
+                    }
+                }
 
-            // Add event listeners to gallery buttons
-            document.querySelectorAll('.gallery-button').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const index = parseInt(e.target.getAttribute('data-index'));
-                    openGallery(index);
-                });
-            });
+                // Segundo: buscar directamente nombres de modelos
+                if (!modeloEncontrado) {
+                    const textoCompleto = container.textContent || '';
+                    for (const modelo in modelosEspecificaciones) {
+                        // Verificar si el modelo está contenido en el texto o viceversa
+                        if (textoCompleto.includes(modelo) || modelo.includes(textoCompleto.split('(')[0].trim())) {
+                            modeloEncontrado = modelo;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Si encontramos un modelo, mostrar las especificaciones
+            if (modeloEncontrado && modelosEspecificaciones[modeloEncontrado]) {
+                openSpecsModal(modeloEncontrado);
+            } else {
+                // Si no se encuentra, intentar con el texto del botón o mostrar error
+                const containerGrande = button.closest('.subsection-card') || button.closest('.section-card');
+                const textoCompleto = (containerGrande ? containerGrande.textContent : '') || '';
+
+                // Buscar cualquier modelo en el texto completo
+                for (const modelo in modelosEspecificaciones) {
+                    if (textoCompleto.includes(modelo)) {
+                        modeloEncontrado = modelo;
+                        break;
+                    }
+                }
+
+                if (modeloEncontrado && modelosEspecificaciones[modeloEncontrado]) {
+                    openSpecsModal(modeloEncontrado);
+                } else {
+                    // Mostrar mensaje de error
+                    document.getElementById('specsModalTitle').textContent = 'Modelo no encontrado';
+                    document.getElementById('specsModalContent').innerHTML = `
+                <div class="text-center p-8">
+                    <i class="fas fa-exclamation-triangle text-4xl text-yellow-500 mb-4"></i>
+                    <p class="text-lg font-semibold mb-2">No se encontraron especificaciones para este modelo</p>
+                    <p class="text-gray-600">Contacta con nosotros para obtener las especificaciones técnicas completas.</p>
+                </div>
+            `;
+                    document.getElementById('specsModal').style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            }
         }
 
-        // Open Gallery
-        function openGallery(productIndex) {
-            selectedProduct = productIndex;
-            currentImageIndex = 0;
+        // Función para abrir el modal de especificaciones
+        function openSpecsModal(modelo) {
+            const especificaciones = modelosEspecificaciones[modelo];
 
-            updateModal();
-            galleryModal.style.display = 'flex';
+            if (!especificaciones) {
+                openSpecsFromButton(document.activeElement);
+                return;
+            }
+
+            // Actualizar título del modal
+            document.getElementById('specsModalTitle').textContent = `Especificaciones Técnicas: ${modelo}`;
+
+            // Generar tabla de especificaciones
+            let tablaHTML = `
+                <div class="overflow-x-auto">
+                    <table class="specs-table-modal">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Especificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            for (const [caracteristica, valor] of Object.entries(especificaciones)) {
+                tablaHTML += `
+                    <tr>
+                        <td><strong>${caracteristica}</strong></td>
+                        <td>${valor}</td>
+                    </tr>
+                `;
+            }
+
+            tablaHTML += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            // Insertar contenido en el modal
+            document.getElementById('specsModalContent').innerHTML = tablaHTML;
+
+            // Mostrar el modal
+            document.getElementById('specsModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
-        // Close Gallery
-        function closeGallery() {
-            galleryModal.style.display = 'none';
+        // Función para cerrar el modal de especificaciones
+        function closeSpecsModal() {
+            document.getElementById('specsModal').style.display = 'none';
             document.body.style.overflow = 'auto';
-            selectedProduct = null;
         }
 
-        // Update Modal Content
-        function updateModal() {
-            if (selectedProduct === null) return;
-
-            const product = tomokiProducts[selectedProduct];
-            const image = product.images[currentImageIndex];
-
-            modalImage.src = image;
-            modalImage.alt = `${product.title} - Imagen ${currentImageIndex + 1}`;
-            modalTitle.textContent = product.title;
-            modalHighlight.textContent = product.highlight;
-            imageCounter.textContent = `${currentImageIndex + 1} / ${product.images.length}`;
-
-            // Ensure all images have consistent size
-            modalImage.onload = function () {
-                const container = modalImage.parentElement;
-                const imgWidth = modalImage.naturalWidth;
-                const imgHeight = modalImage.naturalHeight;
-
-                // Set consistent display
-                modalImage.style.maxWidth = '100%';
-                modalImage.style.maxHeight = '100%';
-                modalImage.style.objectFit = 'contain';
-            };
-        }
-
-        // Next Image
-        function nextImage() {
-            if (selectedProduct === null) return;
-
-            const productImages = tomokiProducts[selectedProduct].images;
-            currentImageIndex = (currentImageIndex + 1) % productImages.length;
-            updateModal();
-        }
-
-        // Previous Image
-        function prevImage() {
-            if (selectedProduct === null) return;
-
-            const productImages = tomokiProducts[selectedProduct].images;
-            currentImageIndex = currentImageIndex === 0 ? productImages.length - 1 : currentImageIndex - 1;
-            updateModal();
-        }
-
-        // Event Listeners
-        modalOverlay.addEventListener('click', closeGallery);
-        closeModalBtn.addEventListener('click', closeGallery);
-        prevButton.addEventListener('click', prevImage);
-        nextButton.addEventListener('click', nextImage);
-
-        // Keyboard Navigation
-        document.addEventListener('keydown', (e) => {
-            if (galleryModal.style.display === 'flex') {
-                if (e.key === 'Escape') closeGallery();
-                if (e.key === 'ArrowLeft') prevImage();
-                if (e.key === 'ArrowRight') nextImage();
+        // Cerrar modal al hacer clic fuera del contenido
+        document.getElementById('specsModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeSpecsModal();
             }
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && document.getElementById('specsModal').style.display === 'block') {
+                closeSpecsModal();
+            }
+        });
 
+        // ==============================================
+        // CÓDIGO EXISTENTE (sin modificar)
+        // ==============================================
+
+        // Datos de las galerías
+        const galleries = {
+            'piscina-columnas': {
+                title: 'Pantalla entre Columnas - Piscina',
+                description: 'Solución IP68 específicamente diseñada para ambientes de alta humedad y exposición al cloro. Perfecta para mostrar tiempos de competición, resultados y publicidad de patrocinadores durante eventos acuáticos.',
+                images: 3,
+                videos: ['./assets/piscina/video-1.mp4', './assets/piscina/video-2.mp4']
+            },
+            'piscina-intermedia': {
+                title: 'Pantalla Intermedia Columnas - Piscina',
+                description: 'Dos opciones innovadoras para días de competición: Rolling Led Screen o pantalla rotativa de doble cara. Ambas ofrecen gran impacto visual.',
+                images: 3,
+                videos: ['./assets/piscina/video-1.mp4', './assets/piscina/video-2.mp4']
+            },
+            'piscina-calles': {
+                title: 'Piscinas con 3 y 6 calles',
+                description: 'Modelos con tecnología GOB para mayor protección contra humedad y golpes. Ideal para piscinas con múltiples carriles.',
+                images: 3,
+                videos: ['./assets/piscina/video-1.mp4', './assets/piscina/video-2.mp4']
+            },
+            'gimnasio-room1-a': {
+                title: 'Gimnasio Room 1 - Pantalla A',
+                description: 'Pantalla de alta visibilidad para Room 1 del gimnasio. Resistente a vibraciones y sudoración.',
+                images: 3,
+                videos: ['./assets/gimnasio/video-1.mp4', './assets/gimnasio/video-2.mp4']
+            },
+            'gimnasio-room1-b': {
+                title: 'Gimnasio Room 1 - Pantalla B',
+                description: 'Segunda pantalla para Room 1 del gimnasio. Formato optimizado para rutinas de ejercicio.',
+                images: 3,
+                videos: ['./assets/gimnasio/video-1.mp4', './assets/gimnasio/video-2.mp4']
+            },
+            'gimnasio-room2-a': {
+                title: 'Gimnasio Room 2 - Pantalla A (Transparente)',
+                description: 'Pantalla transparente de alta luminosidad para Room 2. Permite ver a través mientras muestra contenido.',
+                images: 3,
+                videos: ['./assets/gimnasio/video-1.mp4', './assets/gimnasio/video-2.mp4']
+            },
+            'gimnasio-room2-b': {
+                title: 'Gimnasio Room 2 - Pantalla B (Esquina)',
+                description: 'Pantalla en esquina que une dos paredes. Solución innovadora para aprovechar espacios.',
+                images: 3,
+                videos: ['./assets/gimnasio/video-1.mp4', './assets/gimnasio/video-2.mp4']
+            },
+            'gimnasio-room3': {
+                title: 'Gimnasio Room 3',
+                description: 'Pantalla compacta para Room 3 del gimnasio. Perfecta para clases reducidas y entrenamiento personal.',
+                images: 3,
+                videos: ['./assets/gimnasio/video-1.mp4', './assets/gimnasio/video-2.mp4']
+            },
+            'escalera-horarios': {
+                title: 'Pantallas Escalera Horarios',
+                description: 'Instalación vertical para espacios reducidos en escaleras principales. Formato delgado y ligero, ideal para mensajes de bienvenida y orientación.',
+                images: 3,
+                videos: ['./assets/escalera/video-1.mp4', './assets/escalera/video-2.mp4']
+            },
+            'escalera-salida': {
+                title: 'Escalera Salida',
+                description: 'Despedida interactiva con agradecimientos, recordatorios de próximos eventos y encuestas de satisfacción.',
+                images: 3,
+                videos: ['./assets/escalera-salida/video-1.mp4', './assets/escalera-salida/video-2.mp4']
+            },
+            'vestuario-masculino': {
+                title: 'Vestuario Masculino',
+                description: 'Solución resistente a condiciones de alta humedad y vapor. Diseño robusto con protección contra impactos.',
+                images: 3,
+                videos: ['./assets/vestuario-masculino/video-1.mp4', './assets/vestuario-masculino/video-2.mp4']
+            },
+            'vestuario-femenino': {
+                title: 'Vestuario Femenino',
+                description: 'Pantalla móvil triple de gran definición. Diseño elegante y versátil para el vestuario femenino.',
+                images: 3,
+                videos: ['./assets/vestuario-femenino/video-1.mp4', './assets/vestuario-femenino/video-2.mp4']
+            },
+            'hall-pared': {
+                title: 'Hall de Entrada - Pantalla Pared',
+                description: 'Pantalla principal de recepción en la pared. Máximo impacto visual para visitantes y socios.',
+                images: 3,
+                videos: ['./assets/hall-entrada/video-1.mp4', './assets/hall-entrada/video-2.mp4']
+            },
+            'hall-puerta': {
+                title: 'Hall de Entrada - Puerta de entrada',
+                description: 'Pantalla transparente en la puerta de entrada. Tecnología innovadora que no obstruye la visión.',
+                images: 3,
+                videos: ['./assets/hall-entrada/video-1.mp4', './assets/hall-entrada/video-2.mp4']
+            },
+            'letras-calle': {
+                title: 'Letras en la Calle',
+                description: 'Instalación de la palabra "Fluvial" en la fachada exterior. Letras LED de gran tamaño y alta visibilidad.',
+                images: 3,
+                videos: ['./assets/letras-calle/video-1.mp4', './assets/letras-calle/video-2.mp4']
+            },
+            'pantallas-moviles': {
+                title: 'Pantallas Móviles para Exteriores',
+                description: '3 pantallas independientes que pueden unirse para formar una pantalla grande continua. Totalmente móviles para actividades al aire libre.',
+                images: 3,
+                videos: ['./assets/pantallas-moviles/video-1.mp4', './assets/pantallas-moviles/video-2.mp4']
+            },
+            'crystalblink': {
+                title: 'CrystalBlink - Opacidad Variable',
+                description: 'Tecnología revolucionaria de opacidad variable. Transparente cuando está apagada, opaca cuando muestra contenido. Perfecta para separar espacios sin perder luminosidad.',
+                images: 3,
+                videos: ['./assets/crystalblink/video-1.mp4', './assets/crystalblink/video-2.mp4']
+            }
+        };
+
+        // Variables del carrusel
+        let currentGalleryId = null;
+        let currentImageIndex = 0;
+        let totalImages = 0;
+
+        // Variables CrystalBlink
+        let isCrystalActive = false;
+        let showCrystalLogo = false;
+        let currentCrystalDemo = 0;
+
+        const crystalDemos = [
+            {
+                title: "Modo Transparente",
+                description: "Estado normal sin activar CrystalBlink.",
+                state: "transparente"
+            },
+            {
+                title: "Modo Privacidad sin logo",
+                description: "Opacidad total instantánea para confidencialidad absoluta con distintos colores.",
+                state: "oscuro"
+            },
+            {
+                title: "Branding Corporativo",
+                description: "Opacidad total instantánea con proyección de logos personalizados.",
+                state: "logo"
+            }
+        ];
+
+        // Función para abrir galería
+        function openGallery(galleryId, imageCount) {
+            const gallery = galleries[galleryId];
+            if (!gallery) {
+                // Si no existe la galería específica, usar la genérica
+                const genericId = galleryId.split('-')[0];
+                if (galleries[genericId]) {
+                    return openGallery(genericId, imageCount);
+                }
+                return;
+            }
+
+            currentGalleryId = galleryId;
+            currentImageIndex = 0;
+            totalImages = imageCount;
+
+            // Actualizar contenido del modal
+            document.getElementById('modalTitle').textContent = gallery.title;
+            document.getElementById('modalDescription').textContent = gallery.description;
+
+            // Crear imágenes del carrusel
+            const carouselTrack = document.getElementById('carouselTrack');
+            carouselTrack.innerHTML = '';
+
+            for (let i = 1; i <= imageCount; i++) {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `
+                        <img src="./assets/${galleryId.split('-')[0]}/imagen-${i}.jpg" 
+                             alt="${gallery.title} - Imagen ${i}" 
+                             onerror="this.src='https://via.placeholder.com/1200x600/1e3a8a/ffffff?text=${encodeURIComponent(gallery.title + ' ' + i)}'">
+                    `;
+                carouselTrack.appendChild(slide);
+            }
+
+            // Configurar videos
+            const video1 = document.getElementById('modalVideo1');
+            const video2 = document.getElementById('modalVideo2');
+
+            video1.innerHTML = `
+                    <source src="${gallery.videos[0]}" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                `;
+            video2.innerHTML = `
+                    <source src="${gallery.videos[1]}" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                `;
+
+            video1.load();
+            video2.load();
+
+            // Mostrar modal
+            document.getElementById('galleryModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Actualizar flechas
+            updateArrows();
+
+            // Scroll al inicio del carrusel
+            carouselTrack.scrollLeft = 0;
+        }
+
+        // Función para cerrar modal
+        function closeModal() {
+            document.getElementById('galleryModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+
+            // Pausar videos
+            const video1 = document.getElementById('modalVideo1');
+            const video2 = document.getElementById('modalVideo2');
+            video1.pause();
+            video2.pause();
+        }
+
+        // Navegación del carrusel
+        function nextSlide() {
+            if (currentImageIndex < totalImages - 1) {
+                currentImageIndex++;
+                const carouselTrack = document.getElementById('carouselTrack');
+                carouselTrack.scrollLeft = currentImageIndex * carouselTrack.offsetWidth;
+                updateArrows();
+            }
+        }
+
+        function prevSlide() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                const carouselTrack = document.getElementById('carouselTrack');
+                carouselTrack.scrollLeft = currentImageIndex * carouselTrack.offsetWidth;
+                updateArrows();
+            }
+        }
+
+        // Actualizar flechas del carrusel
+        function updateArrows() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            // Ocultar flecha izquierda si estamos en la primera imagen
+            if (currentImageIndex === 0) {
+                prevBtn.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+            }
+
+            // Ocultar flecha derecha si estamos en la última imagen
+            if (currentImageIndex === totalImages - 1) {
+                nextBtn.classList.add('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+            }
+        }
+
+        // Función para expandir/colapsar tablas
+        // Función para expandir/colapsar tablas - MEJORADA
+        function toggleTable(tableId) {
+            const tableContainer = document.getElementById(tableId);
+            const button = event.currentTarget;
+
+            tableContainer.classList.toggle('collapsed');
+            button.classList.toggle('collapsed');
+
+            // Ajustar la altura máxima dinámicamente
+            if (!tableContainer.classList.contains('collapsed')) {
+                // Calcular la altura real de la tabla
+                const tableHeight = tableContainer.scrollHeight;
+                // Establecer la altura máxima para mostrar toda la tabla
+                tableContainer.style.maxHeight = tableHeight + 'px';
+            } else {
+                // Resetear la altura máxima cuando se colapsa
+                tableContainer.style.maxHeight = '0';
+            }
+        }
+
+        // Funciones CrystalBlink
+        function toggleCrystal() {
+            isCrystalActive = !isCrystalActive;
+            const panel = document.getElementById('crystalPanel');
+            const statusPill = document.getElementById('statusPill');
+            const button = document.getElementById('toggleCrystalBtn');
+
+            panel.classList.toggle('active');
+
+            if (isCrystalActive) {
+                statusPill.textContent = '🔒 PRIVACIDAD ACTIVA';
+                button.textContent = 'Desactivar CrystalBlink';
+
+                // Mostrar logo después de un delay
+                setTimeout(() => {
+                    showCrystalLogo = true;
+                    panel.classList.add('logo-visible');
+                }, 800);
+            } else {
+                statusPill.textContent = '👁️ MODO TRANSPARENTE';
+                button.textContent = 'Activar CrystalBlink';
+                showCrystalLogo = false;
+                panel.classList.remove('logo-visible');
+            }
+        }
+
+        function changeCrystalDemo(index) {
+            currentCrystalDemo = index;
+            const displayWindow = document.getElementById('displayWindow');
+            const demoTitle = document.getElementById('demoTitle');
+            const demoDesc = document.getElementById('demoDesc');
+            const dots = document.querySelectorAll('.crystal-dot');
+
+            // Actualizar ventana de demostración
+            displayWindow.className = 'display-window ' + crystalDemos[index].state;
+            demoTitle.textContent = crystalDemos[index].title;
+            demoDesc.textContent = crystalDemos[index].description;
+
+            // Actualizar dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextCrystalDemo() {
+            const nextIndex = (currentCrystalDemo + 1) % crystalDemos.length;
+            changeCrystalDemo(nextIndex);
+        }
+
+        function prevCrystalDemo() {
+            const prevIndex = (currentCrystalDemo - 1 + crystalDemos.length) % crystalDemos.length;
+            changeCrystalDemo(prevIndex);
+        }
+
+        function openTechModal() {
+            document.getElementById('techModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTechModal() {
+            document.getElementById('techModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Mobile menu
+        document.getElementById('mobile-menu-open').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.add('active');
+        });
+
+        document.getElementById('mobile-menu-close').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.remove('active');
+        });
+
+        // Cerrar menú móvil al hacer clic en enlace
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', function () {
+                document.getElementById('mobile-menu').classList.remove('active');
+            });
+        });
+
+        // Cerrar modales al hacer clic fuera
+        document.getElementById('galleryModal').addEventListener('click', function (event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        document.getElementById('techModal').addEventListener('click', function (event) {
+            if (event.target === this) {
+                closeTechModal();
+            }
+        });
+
+        // Navegación con teclado
+        document.addEventListener('keydown', function (event) {
+            if (document.getElementById('galleryModal').style.display === 'block') {
+                if (event.key === 'ArrowRight') nextSlide();
+                if (event.key === 'ArrowLeft') prevSlide();
+                if (event.key === 'Escape') closeModal();
+            }
+            if (document.getElementById('techModal').style.display === 'block') {
+                if (event.key === 'Escape') closeTechModal();
+            }
+            if (document.getElementById('specsModal').style.display === 'block') {
+                if (event.key === 'Escape') closeSpecsModal();
+            }
+        });
+
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (event) {
+                event.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    const offset = 80;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetPosition,
                         behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            initLuckyDollsGrid();
-
-            // Add fade-in animation to elements on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe elements for fade-in
-            document.querySelectorAll('.contact-card, .product-card, .bufanda-image-container, .bufanda-info').forEach(el => {
-                observer.observe(el);
+        // Event Listeners CrystalBlink
+        document.addEventListener('DOMContentLoaded', function () {
+            // ========== INICIALIZACIÓN DE TABLAS ==========
+            const tableContainers = document.querySelectorAll('.table-container');
+            tableContainers.forEach(container => {
+                container.classList.add('collapsed');
+                container.style.maxHeight = '0';
             });
+
+            const toggleButtons = document.querySelectorAll('.toggle-table-btn');
+            toggleButtons.forEach(button => {
+                button.classList.add('collapsed');
+            });
+
+            // ========== INICIALIZACIÓN DE BOTONES DE ESPECIFICACIONES ==========
+            const especButtons = document.querySelectorAll('button');
+            especButtons.forEach(btn => {
+                const btnText = btn.textContent || '';
+                if (btnText.toLowerCase().includes('especificaciones') ||
+                    (btnText.includes('Ver más') && btnText.includes('especificaciones'))) {
+
+                    if (!btn.classList.contains('specs-btn')) {
+                        btn.className = 'specs-btn';
+                    }
+                }
+            });
+
+            // ========== CRYSTALBLINK ==========
+            // Botón toggle CrystalBlink
+            const toggleCrystalBtn = document.getElementById('toggleCrystalBtn');
+            if (toggleCrystalBtn) {
+                toggleCrystalBtn.addEventListener('click', toggleCrystal);
+            }
+
+            // Botones carrusel CrystalBlink
+            const nextCrystalBtn = document.getElementById('nextCrystalBtn');
+            const prevCrystalBtn = document.getElementById('prevCrystalBtn');
+            if (nextCrystalBtn) nextCrystalBtn.addEventListener('click', nextCrystalDemo);
+            if (prevCrystalBtn) prevCrystalBtn.addEventListener('click', prevCrystalDemo);
+
+            // Botón modal técnico
+            const openTechModalBtn = document.getElementById('openTechModal');
+            if (openTechModalBtn) {
+                openTechModalBtn.addEventListener('click', openTechModal);
+            }
+
+            // Inicializar primera demostración
+            changeCrystalDemo(0);
         });
 
-        // Prevent hover effects on mobile
-        function hasHoverSupport() {
-            return window.matchMedia('(hover: hover)').matches;
-        }
+        // Actualizar flechas al redimensionar ventana
+        window.addEventListener('resize', function () {
+            if (document.getElementById('galleryModal').style.display === 'block') {
+                updateArrows();
+            }
+        });
 
-        if (!hasHoverSupport()) {
-            document.querySelectorAll('.product-card, .contact-card').forEach(card => {
-                card.classList.add('no-hover');
+        // Inicializar todas las tablas como colapsadas
+        document.addEventListener('DOMContentLoaded', function () {
+            const tableContainers = document.querySelectorAll('.table-container');
+            tableContainers.forEach(container => {
+                container.classList.add('collapsed');
             });
-        }
+
+            const toggleButtons = document.querySelectorAll('.toggle-table-btn');
+            toggleButtons.forEach(button => {
+                button.classList.add('collapsed');
+            });
+
+            // Inicializar botones de especificaciones
+            const especButtons = document.querySelectorAll('button');
+            especButtons.forEach(btn => {
+                const btnText = btn.textContent || '';
+                if (btnText.includes('especificaciones') || btnText.includes('Especificaciones')) {
+                    if (!btn.classList.contains('specs-btn')) {
+                        btn.className = 'specs-btn';
+                        // Si no tiene evento onclick, añadirlo
+                        if (!btn.getAttribute('onclick')) {
+                            btn.addEventListener('click', function (e) {
+                                e.stopPropagation();
+                                openSpecsFromButton(this);
+                            });
+                        }
+                    }
+                }
+            });
+        });
     </script>
 </body>
 
